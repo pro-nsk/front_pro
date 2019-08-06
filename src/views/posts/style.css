@@ -2,7 +2,7 @@
     --сuprum-font-family: 'Cuprum', sans-serif;
 }
 
-.create-post-form {
+.pro-form {
     font-family: var(--сuprum-font-family);
     font-size: 16px;
     display: flex;
@@ -13,7 +13,7 @@
     color: gray;
 }
 
-.create-post-form input {
+.pro-form input {
     width: 300px;
     height: 50px;
     border: none;
@@ -23,20 +23,20 @@
     margin-bottom: 30px;
 }
 
-.create-post-form input:focus {
+.pro-form input:focus {
     outline-width: 0;
 }
 
-.create-post-buttons {
+.pro-buttons {
     width: 200px;
 }
 
-.create-post-b-1 {
+.form-b-1 {
     float: left;
     cursor: pointer;
 }
 
-.create-post-b-2 {
+.form-b-2 {
     float: right;
     cursor: pointer;
 }

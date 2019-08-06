@@ -6,3 +6,10 @@ export function isAuthenticated() {
     }
     return false;
 }
+
+export function isEnter(e) {
+    if (e.key == 'Enter') {
+        return true;
+    }
+    return false;
+}

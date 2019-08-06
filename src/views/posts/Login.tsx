@@ -3,6 +3,7 @@ import { Component } from 'react';
 import AppProps from '../../util/AppProps';
 import { postApi } from '../../api/api';
 import './style.css';
+import {isEnter} from '../../util/AuthUtil';
 
 class Login extends Component<AppProps> {
 
@@ -25,12 +26,6 @@ class Login extends Component<AppProps> {
         
     }
 
-    handlleEnter = (e) => {
-        if (e.key == 'Enter') {
-            this.login();
-        }
-    }
-
     handleEmailChange = (e) => {
         this.setState({email: e.target.value});
     }
@@ -42,14 +37,14 @@ class Login extends Component<AppProps> {
     render() {
         
         return (
-            <div className="create-post-form">
+            <div className="pro-form">
                 {this.state.error && <div className="error">{this.state.error}</div>}
-                            <input onChange={this.handleEmailChange} onKeyPress={this.handlleEnter}/>
-                            <input onChange={this.handlePassChange} onKeyPress={this.handlleEnter}/>
+                            <input onChange={this.handleEmailChange} onKeyPress={e => isEnter(e) && this.login()}/>
+                            <input onChange={this.handlePassChange} onKeyPress={e => isEnter(e) && this.login()}/>
                 
-                <div className="create-post-buttons">
-                    <div className="create-post-b-1" onClick={this.props.history.goBack}>cancel</div>
-                    <div className="create-post-b-2" onClick={this.login}>login</div>
+                <div className="pro-buttons">
+                    <div className="form-b-1" onClick={this.props.history.goBack}>cancel</div>
+                    <div className="form-b-2" onClick={this.login}>login</div>
                 </div>
             
             </div>

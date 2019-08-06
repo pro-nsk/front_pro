@@ -3,6 +3,7 @@ import {Component} from 'react';
 import AppProps from '../../util/AppProps';
 import {Post, postApi} from '../../api/api';
 import './style.css';
+import {isEnter} from '../../util/AuthUtil';
 
 class NewPost extends Component<AppProps> {
 
@@ -27,20 +28,14 @@ class NewPost extends Component<AppProps> {
         this.setState({url: e.target.value});
     }
 
-    handlleEnter = (e) => {
-        if (e.key == 'Enter') {
-            this.create();
-        }
-    }
-
     render() {
         return (
-            <div className="create-post-form">
+            <div className="pro-form">
                 {this.state.error && <div className="error">{this.state.error}</div>}
-                <input onChange={this.handleUrlChange} onKeyPress={this.handlleEnter}/>
-                <div className="create-post-buttons">
-                    <div className="create-post-b-1" onClick={this.props.history.goBack}>cancel</div>
-                    <div className="create-post-b-2" onClick={this.create}>create post</div>
+                <input onChange={this.handleUrlChange} onKeyPress={e => isEnter(e) && this.create()}/>
+                <div className="pro-buttons">
+                    <div className="form-b-1" onClick={this.props.history.goBack}>cancel</div>
+                    <div className="form-b-2" onClick={this.create}>create post</div>
                 </div>
             </div>
         );
