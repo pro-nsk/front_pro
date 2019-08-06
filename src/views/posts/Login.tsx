@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Component } from 'react';
+import {Component} from 'react';
+import {postApi as api} from '../../api/api';
 import AppProps from '../../util/AppProps';
-import { postApi } from '../../api/api';
-import './style.css';
 import {isEnter} from '../../util/AuthUtil';
+import './style.css';
 
 class Login extends Component<AppProps> {
 
@@ -13,17 +13,15 @@ class Login extends Component<AppProps> {
         error: undefined
     };
 
-    login = () => {
-            postApi.login(this.state.email, this.state.pass).then(success => {
-                if (success) {
-                    this.props.history.push('/');
-                } else {
-                    this.setState({unauthorized: true});
-                }
-            }).catch(error => {
-                this.setState({error: error.error});
-            });
-        
+    login = async () => {
+        try {
+            let success = await api.login(this.state.email, this.state.pass);
+            if (success) {
+                this.props.history.push('/');
+            }
+        } catch (error) {
+            this.setState({error: error.error});
+        }
     }
 
     handleEmailChange = (e) => {
@@ -35,20 +33,16 @@ class Login extends Component<AppProps> {
     }
 
     render() {
-        
         return (
             <div className="pro-form">
                 {this.state.error && <div className="error">{this.state.error}</div>}
-                            <input onChange={this.handleEmailChange} onKeyPress={e => isEnter(e) && this.login()}/>
-                            <input onChange={this.handlePassChange} onKeyPress={e => isEnter(e) && this.login()}/>
-                
+                <input onChange={this.handleEmailChange} onKeyPress={e => isEnter(e) && this.login()} />
+                <input onChange={this.handlePassChange} onKeyPress={e => isEnter(e) && this.login()} />
                 <div className="pro-buttons">
                     <div className="form-b-1" onClick={this.props.history.goBack}>cancel</div>
                     <div className="form-b-2" onClick={this.login}>login</div>
                 </div>
-            
             </div>
-            
         );
     }
 }
