@@ -1,0 +1,67 @@
+:root {
+    --сuprum-font-family: 'Cuprum', sans-serif;
+}
+
+.create-post-form {
+    font-family: var(--сuprum-font-family);
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: gray;
+}
+
+.create-post-form input {
+    width: 300px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: darkslategrey;
+    padding: 10px;
+}
+
+.create-post-form input:focus {
+    outline-width: 0;
+}
+
+.create-post-buttons {
+    margin-top: 30px;
+    width: 200px;
+}
+
+.create-post-b-1 {
+    float: left;
+    cursor: pointer;
+}
+
+.create-post-b-2 {
+    float: right;
+    cursor: pointer;
+}
+
+.error {
+    margin-bottom: 30px;
+}
+
+.post-list {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.pro-menu {
+    margin-right: 20px;
+}
+
+.nav-bar {
+    font-family: var(--сuprum-font-family);
+    font-size: 16px;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.nav-bar a {
+    color: grey;
+    text-decoration: underline;
+}
