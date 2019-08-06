@@ -20,6 +20,7 @@
     border-radius: 5px;
     background-color: darkslategrey;
     padding: 10px;
+    margin-bottom: 30px;
 }
 
 .create-post-form input:focus {
@@ -27,7 +28,6 @@
 }
 
 .create-post-buttons {
-    margin-top: 30px;
     width: 200px;
 }
 

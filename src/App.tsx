@@ -4,7 +4,7 @@ import { Redirect, Route, Router, Switch } from 'react-router';
 import AppProps from './util/AppProps';
 import NewPost from './views/posts/NewPost';
 import Posts from './views/posts/Posts';
-import PLogin from './views/posts/pLogin';
+import PLogin from './views/posts/Login';
 
 class App extends React.Component<AppProps, {}> {
 
