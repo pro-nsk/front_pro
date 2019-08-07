@@ -1,4 +1,3 @@
-import 'antd/dist/antd.css';
 import * as React from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router';
 import AppProps from './util/AppProps';
