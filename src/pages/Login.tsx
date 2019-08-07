@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Component} from 'react';
-import {api} from '../../api/api';
-import AppProps from '../../util/AppProps';
-import {isEnter} from '../../util/AuthUtil';
+import {api} from '../api/api';
+import AppProps from '../util/AppProps';
+import {isEnter} from '../util/AuthUtil';
 import './style.css';
 
 class Login extends Component<AppProps> {

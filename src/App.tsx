@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router';
 import AppProps from './util/AppProps';
-import NewPost from './views/posts/NewPost';
-import Posts from './views/posts/Home';
-import Login from './views/posts/Login';
-import Logout from './views/posts/Logout';
+import CreatePost from './pages/CreatePost';
+import Posts from './pages/Home';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
 
 class App extends React.Component<AppProps> {
 
@@ -20,7 +20,7 @@ class App extends React.Component<AppProps> {
         return (
             <Router history={this.props.history}>
                 <Switch>
-                    <Route path="/create" component={NewPost} />
+                    <Route path="/create" component={CreatePost} />
                     <Route path="/login" component={Login} />
                     <Route path="/logout" component={Logout} />
                     <Route path="/" component={Posts} />

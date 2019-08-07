@@ -2,9 +2,9 @@ import * as React from 'react';
 import {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './style.css';
-import AppProps from '../../util/AppProps';
-import {Post, api} from '../../api/api';
-import {isAuthenticated} from '../../util/AuthUtil';
+import AppProps from '../util/AppProps';
+import {Post, api} from '../api/api';
+import {isAuthenticated} from '../util/AuthUtil';
 
 class Posts extends Component<AppProps> {
 

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {Component} from 'react';
-import AppProps from '../../util/AppProps';
-import {Post, api} from '../../api/api';
+import AppProps from '../util/AppProps';
+import {Post, api} from '../api/api';
 import './style.css';
-import {isEnter} from '../../util/AuthUtil';
+import {isEnter} from '../util/AuthUtil';
 
-class NewPost extends Component<AppProps> {
+class CreatePost extends Component<AppProps> {
 
     state = {
         url: '',
@@ -42,4 +42,4 @@ class NewPost extends Component<AppProps> {
     }
 }
 
-export default NewPost;
+export default CreatePost;
