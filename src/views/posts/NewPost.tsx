@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Component} from 'react';
 import AppProps from '../../util/AppProps';
-import {Post, postApi} from '../../api/api';
+import {Post, api} from '../../api/api';
 import './style.css';
 import {isEnter} from '../../util/AuthUtil';
 
@@ -15,7 +15,7 @@ class NewPost extends Component<AppProps> {
     create = async () => {
         let post: Post = {url: this.state.url};
         try {
-            let posts = await postApi.create(post);
+            let posts = await api.create(post);
             if (posts) {
                 this.props.history.push('/');
             }

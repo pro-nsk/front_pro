@@ -6,22 +6,16 @@ export interface Post {
     url: string;
 }
 
-class PostApi extends BaseApi {
+class Api extends BaseApi {
 
-    posts(): Promise<any> {
-
-        const options: RequestInit = {
-            method: 'GET'
-        };
-
-        return this.fetch(configuration.basePath + '/post', options)
-            .then(async (response) => {
-                let json = await response.json();
-                return Promise.resolve(json);
-            })
-            .catch(() => {
-                return [];
-            });
+    async posts(): Promise<any> {
+        try {
+            let response = await this.fetch(configuration.basePath + '/post', {method: 'GET'});
+            let json = await response.json();
+            return Promise.resolve(json);
+        } catch (error) {
+            return processError(error);
+        }
     }
 
     async create(post: Post): Promise<boolean> {
@@ -64,19 +58,15 @@ class PostApi extends BaseApi {
         }
     }
 
-    logout(): Promise<boolean> {
-
-        const options: RequestInit = {method: 'GET'};
-
-        return this.fetch(configuration.basePath + '/providers/logout', options)
-            .then(() => {
-                localStorage.removeItem(StorageKey.Authenticated);
-                return Promise.resolve(true);
-            })
-            .catch(() => {
-                return Promise.resolve(false);
-            });
+    async logout(): Promise<boolean> {
+        try {
+            await this.fetch(configuration.basePath + '/logout', {method: 'GET'});
+            localStorage.removeItem(StorageKey.Authenticated);
+            return Promise.resolve(true);
+        } catch (e) {
+            return Promise.resolve(false);
+        }
     }
 }
 
-export const postApi = new PostApi();
+export const api = new Api();
