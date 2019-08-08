@@ -1,3 +1,3 @@
 window.appConfig = {
-    endpoint: "localhost:3000",
+    endpoint: "localhost:3042",
 };

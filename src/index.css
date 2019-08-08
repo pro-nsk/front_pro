@@ -5,6 +5,10 @@
     background-color: #000000;
 }
 
+:root {
+    --сuprum-font-family: 'Cuprum', sans-serif;
+}
+
 /*reset*/
 body {
     margin: 0;
@@ -13,6 +17,9 @@ body {
 html, body {
     width: 100%;
     height: 100%;
+    font-family: var(--сuprum-font-family);
+    font-size: 16px;
+    color: grey;
 }
 
 input, button, select, optgroup, textarea {

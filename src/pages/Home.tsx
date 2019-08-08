@@ -24,14 +24,16 @@ class Posts extends Component<AppProps> {
         this.setState({posts});
     }
 
-    renderFeed() {
+    renderFeed(auth: boolean) {
         let posts: Post[] = this.state.posts;
         return posts.map(post => {
-            return <div key={post._id}>
-                <img key={post._id} src={post.url} />
-                <div onClick={() => this.deletePost(post._id)}>delete</div>
-            </div>;
-        }).slice(this.state.pageNumber * pageSize,(this.state.pageNumber * pageSize) + pageSize);
+            return (
+                <div key={post._id}>
+                    <img key={post._id} src={post.url} />
+                    {auth && <div className="delete" onClick={() => this.deletePost(post._id)}>delete</div>}
+                </div>
+            );
+        }).slice(this.state.pageNumber * pageSize, (this.state.pageNumber * pageSize) + pageSize);
     }
 
     next = () => {
@@ -61,6 +63,7 @@ class Posts extends Component<AppProps> {
 
     deletePost(id: string) {
         api.delete(id);
+        this.loadData();
     }
 
     render() {
@@ -74,7 +77,7 @@ class Posts extends Component<AppProps> {
                 }
             </div>,
             <div key="posts" className="post-list">
-                {this.renderFeed()}
+                {this.renderFeed(auth)}
             </div>,
             <div key="pagination" className="bottom-bar">
                 {!this.isFirst() && <div className="prev" onClick={this.prev}>prev</div>}
