@@ -21,7 +21,7 @@
     "typescript": "3.4.4"
   },
   "scripts": {
-    "start": "set PORT=3031 && ./node_modules/.bin/react-scripts-ts start",
+    "start": "set PORT=3009 && ./node_modules/.bin/react-scripts-ts start",
     "build": "./node_modules/.bin/react-scripts-ts build",
     "test": "./node_modules/.bin/react-scripts-ts test --env=jsdom",
     "eject": "./node_modules/.bin/react-scripts-ts eject"
