@@ -45,28 +45,53 @@
     margin-bottom: 30px;
 }
 
-.post-list {
+.post-list, .post-list img {
     width: 1280px;
     margin: 0 auto;
 }
 
 .post-list img {
-    width: 1280px;
-    margin: 0 auto;
+    margin: 30px 0;
 }
 
-.pro-menu {
-    margin-right: 20px;
+.create {
+    float: left;
 }
 
-.nav-bar {
+.auth {
+    float: right;
+}
+
+.top-bar, .bottom-bar {
     font-family: var(--сuprum-font-family);
     font-size: 16px;
     width: 1000px;
     margin: 0 auto;
+    color: grey;
 }
 
-.nav-bar a {
+.top-bar {
+    margin-top: 20px;
+}
+
+.bottom-bar {
+    margin-bottom: 30px;
+}
+
+.top-bar a {
     color: grey;
     text-decoration: underline;
+}
+
+.bottom-bar div {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.prev {
+    float: left;
+}
+
+.next {
+    float: right;
 }

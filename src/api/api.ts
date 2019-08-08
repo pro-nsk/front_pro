@@ -3,6 +3,7 @@ import { processError } from './fetch';
 import {StorageKey} from '../util/Storage';
 
 export interface Post {
+    _id: string;
     url: string;
 }
 
@@ -65,6 +66,15 @@ class Api extends BaseApi {
             return Promise.resolve(true);
         } catch (e) {
             return Promise.resolve(false);
+        }
+    }
+
+    async delete(id: string): Promise<boolean> {
+        try {
+            await this.fetch(configuration.basePath + '/post/' + id, {method: 'DELETE'});
+            return Promise.resolve(true);
+        } catch (error) {
+            return processError(error);
         }
     }
 }

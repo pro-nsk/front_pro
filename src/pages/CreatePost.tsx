@@ -13,7 +13,7 @@ class CreatePost extends Component<AppProps> {
     };
 
     create = async () => {
-        let post: Post = {url: this.state.url};
+        let post: Post = {_id: '', url: this.state.url};
         try {
             let posts = await api.create(post);
             if (posts) {
