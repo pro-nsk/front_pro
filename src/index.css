@@ -3,6 +3,22 @@
     overflow: auto;
     /* display: flex; */
     background-color: #000000;
+
+    scrollbar-color: grey black;
+    scrollbar-width: thin;
+}
+
+#root::-webkit-scrollbar {
+    background-color: black;
+    width:6px
+}
+
+#root::-webkit-scrollbar-track {
+    background-color: black
+}
+
+#root::-webkit-scrollbar-thumb {
+    background-color: grey;
 }
 
 :root {

@@ -29,7 +29,7 @@ class Posts extends Component<AppProps> {
         return posts.map(post => {
             return (
                 <div key={post._id}>
-                    <img key={post._id} src={post.url} />
+                    <a href={post.url}><img key={post._id} src={post.url} /></a>
                     {auth && <div className="delete" onClick={() => this.deletePost(post._id)}>delete</div>}
                 </div>
             );
@@ -61,9 +61,9 @@ class Posts extends Component<AppProps> {
         return (this.state.posts.length / pageSize) <= (this.state.pageNumber + 1);
     }
 
-    deletePost(id: string) {
-        api.delete(id);
-        this.loadData();
+    async deletePost(id: string) {
+        let ok = await api.delete(id);
+        ok && this.loadData();
     }
 
     render() {
@@ -76,13 +76,15 @@ class Posts extends Component<AppProps> {
                     <Link className="auth" to="/login" key="login">login</Link>
                 }
             </div>,
+            <img className="logo" src={'/images/logo.png'} alt="" key="logo" onClick={() => this.setState({pageNumber: 0})}/>,
             <div key="posts" className="post-list">
                 {this.renderFeed(auth)}
             </div>,
             <div key="pagination" className="bottom-bar">
                 {!this.isFirst() && <div className="prev" onClick={this.prev}>prev</div>}
                 {!this.isLast() && <div className="next" onClick={this.next}>next</div>}
-            </div>
+            </div>,
+            <div key="copyright" className="copyright">© pro nsk, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
         ];
     }
 }

@@ -44,8 +44,10 @@
     margin: 0 auto;
 }
 
-.post-list img {
-    margin-top: 30px;
+.post-list > div {
+    margin: 30px 0 30px 0;
+    /*null height with float divs hack*/
+    overflow: hidden;
 }
 
 .create {
@@ -63,10 +65,14 @@
 
 .top-bar {
     margin-top: 20px;
+    /*null height with float divs hack*/
+    overflow: hidden;
 }
 
 .bottom-bar {
     margin-bottom: 30px;
+    /*null height with float divs hack*/
+    overflow: hidden;
 }
 
 .top-bar a {
@@ -89,4 +95,16 @@
 
 .delete {
     float: right;
+}
+
+.logo {
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+}
+
+.copyright {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
 }

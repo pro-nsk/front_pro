@@ -59,6 +59,27 @@ class Api extends BaseApi {
         }
     }
 
+    async register(email: string, password: string, confirmPassword: string): Promise<boolean> {
+
+        const form = 'email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password) + '&confirmPassword=' + encodeURIComponent(confirmPassword);
+
+        const options: RequestInit = {
+            method: 'POST',
+            body: form,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        try {
+            await this.fetch(configuration.basePath + '/signup', options);
+            localStorage.setItem(StorageKey.Authenticated, 'true');
+            return Promise.resolve(true);
+        } catch (err) {
+            return processError(err);
+        }
+    }
+
     async logout(): Promise<boolean> {
         try {
             await this.fetch(configuration.basePath + '/logout', {method: 'GET'});

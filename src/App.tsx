@@ -5,6 +5,7 @@ import CreatePost from './pages/CreatePost';
 import Posts from './pages/Home';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
+import Register from './pages/Register';
 
 class App extends React.Component<AppProps> {
 
@@ -23,6 +24,7 @@ class App extends React.Component<AppProps> {
                     <Route path="/create" component={CreatePost} />
                     <Route path="/login" component={Login} />
                     <Route path="/logout" component={Logout} />
+                    <Route path="/register" component={Register} />
                     <Route path="/" component={Posts} />
                     <Redirect to="/" />
                 </Switch>
