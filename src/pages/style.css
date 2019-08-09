@@ -105,6 +105,16 @@
 
 .copyright {
     width: 1000px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     text-align: center;
+}
+
+.copyright a {
+    color: grey;
+}
+
+.twitter {
+    margin: 0 auto 30px;
+    display: block;
+    width: 50px;
 }

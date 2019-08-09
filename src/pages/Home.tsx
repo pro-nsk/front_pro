@@ -84,7 +84,8 @@ class Posts extends Component<AppProps> {
                 {!this.isFirst() && <div className="prev" onClick={this.prev}>prev</div>}
                 {!this.isLast() && <div className="next" onClick={this.next}>next</div>}
             </div>,
-            <div key="copyright" className="copyright">© pro nsk, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
+            <div key="copyright" className="copyright">© <a href="https://pro.nsk.ru">pro nsk</a>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>,
+            <a key="twitter-link" href="https://twitter.com/pro_nsk"><img className="twitter" src={'/images/twitter.png'} alt="" key="twitter" /></a>
         ];
     }
 }
