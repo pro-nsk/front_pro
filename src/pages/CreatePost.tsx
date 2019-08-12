@@ -3,7 +3,7 @@ import {Component} from 'react';
 import AppProps from '../util/AppProps';
 import {Post, api} from '../api/api';
 import './style.css';
-import {isEnter} from '../util/AuthUtil';
+import {isEnter} from '../util/Util';
 
 class CreatePost extends Component<AppProps> {
 

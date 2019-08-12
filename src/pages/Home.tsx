@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import './style.css';
 import AppProps from '../util/AppProps';
 import {Post, api} from '../api/api';
-import {isAuthenticated} from '../util/AuthUtil';
+import {isAuthenticated} from '../util/Util';
 
 const pageSize = 5;
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Component} from 'react';
 import {api} from '../api/api';
 import AppProps from '../util/AppProps';
-import {isEnter} from '../util/AuthUtil';
+import {isEnter} from '../util/Util';
 import './style.css';
 
 class Register extends Component<AppProps> {
