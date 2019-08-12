@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {Component} from 'react';
-import AppProps from '../util/appProps1';
+import AppProps from '../util/appProps';
 import {Post, api} from '../api/api';
 import './style.css';
-import {isEnter} from '../util/util1';
+import {isEnter} from '../util/util';
 
 class CreatePost extends Component<AppProps> {
 

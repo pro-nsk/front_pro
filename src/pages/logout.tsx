@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {api} from '../api/api';
-import AppProps from '../util/appProps1';
+import AppProps from '../util/appProps';
 
 class Logout extends React.Component<AppProps> {
     async componentDidMount() {

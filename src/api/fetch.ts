@@ -1,5 +1,5 @@
 import * as isofetch from 'isomorphic-fetch';
-import {StorageKey} from '../util/storage1';
+import {StorageKey} from '../util/storage';
 
 export function fetch(input: RequestInfo, init?: RequestInit): Promise<Response> {
 
