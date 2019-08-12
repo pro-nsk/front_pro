@@ -1,4 +1,4 @@
-import {StorageKey} from './storage';
+import {StorageKey} from './storage1';
 
 export function isAuthenticated() {
     if (localStorage.getItem(StorageKey.Authenticated) === 'true') {

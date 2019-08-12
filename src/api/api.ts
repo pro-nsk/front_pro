@@ -1,6 +1,6 @@
 import { BaseApi, configuration } from './base/baseApi';
 import { processError } from './fetch';
-import {StorageKey} from '../util/storage';
+import {StorageKey} from '../util/storage1';
 
 export interface Post {
     _id: string;
