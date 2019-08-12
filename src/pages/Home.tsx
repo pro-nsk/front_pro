@@ -2,9 +2,9 @@ import * as React from 'react';
 import {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './style.css';
-import AppProps from '../util/AppProps';
+import AppProps from '../util/appProps';
 import {Post, api} from '../api/api';
-import {isAuthenticated} from '../util/Util';
+import {isAuthenticated} from '../util/util';
 
 const pageSize = 5;
 

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {Component} from 'react';
-import AppProps from '../util/AppProps';
+import AppProps from '../util/appProps';
 import {Post, api} from '../api/api';
 import './style.css';
-import {isEnter} from '../util/Util';
+import {isEnter} from '../util/util';
 
 class CreatePost extends Component<AppProps> {
 
@@ -32,7 +32,7 @@ class CreatePost extends Component<AppProps> {
         return (
             <div className="pro-form">
                 {this.state.error && <div className="error">{this.state.error}</div>}
-                <input onChange={this.handleUrlChange} onKeyPress={e => isEnter(e) && this.create()}/>
+                <input onChange={this.handleUrlChange} onKeyPress={e => isEnter(e) && this.create()} />
                 <div className="pro-buttons">
                     <div className="form-b-1" onClick={this.props.history.goBack}>cancel</div>
                     <div className="form-b-2" onClick={this.create}>create post</div>

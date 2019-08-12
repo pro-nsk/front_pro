@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router';
-import AppProps from './util/AppProps';
-import CreatePost from './pages/CreatePost';
-import Posts from './pages/Home';
-import Login from './pages/Login';
-import Logout from './pages/Logout';
-import Register from './pages/Register';
+import AppProps from './util/appProps';
+import CreatePost from './pages/createPost';
+import Posts from './pages/home';
+import Login from './pages/login';
+import Logout from './pages/logout';
+import Register from './pages/register';
 
 class App extends React.Component<AppProps> {
 
