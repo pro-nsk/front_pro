@@ -72,7 +72,7 @@ class Api extends BaseApi {
         };
 
         try {
-            await this.fetch(configuration.basePath + '/signup', options);
+            await this.fetch(configuration.basePath + '/register', options);
             localStorage.setItem(StorageKey.Authenticated, 'true');
             return Promise.resolve(true);
         } catch (err) {
