@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router';
 import AppProps from './util/appProps';
-import CreatePost from './pages/createPost';
-import Posts from './pages/home';
+import CreatePost from './pages/createPost1';
+import Posts from './pages/home1';
 import Login from './pages/login';
 import Logout from './pages/logout';
 import Register from './pages/register';

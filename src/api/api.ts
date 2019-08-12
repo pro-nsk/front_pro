@@ -1,4 +1,4 @@
-import { BaseApi, configuration } from './base/baseApi';
+import { BaseApi, configuration } from './base/baseApi1';
 import { processError } from './fetch';
 import {StorageKey} from '../util/storage';
 
