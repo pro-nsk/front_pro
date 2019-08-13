@@ -1,9 +1,9 @@
-import * as React from 'react';
-import {Component} from 'react';
-import {api} from '../api/api';
-import AppProps from '../util/appProps';
-import {isEnter} from '../util/util';
-import './style.css';
+import * as React from 'react'
+import {Component} from 'react'
+import {api} from '../api/api'
+import AppProps from '../util/appProps'
+import {isEnter} from '../util/util'
+import './style.css'
 
 class Login extends Component<AppProps> {
 
@@ -11,25 +11,25 @@ class Login extends Component<AppProps> {
         email: '',
         pass: '',
         error: undefined
-    };
+    }
 
     login = async () => {
         try {
-            let success = await api.login(this.state.email, this.state.pass);
+            let success = await api.login(this.state.email, this.state.pass)
             if (success) {
-                this.props.history.push('/');
+                this.props.history.push('/')
             }
         } catch (error) {
-            this.setState({error: error.error});
+            this.setState({error: error.error})
         }
     }
 
     handleEmailChange = (e) => {
-        this.setState({email: e.target.value});
+        this.setState({email: e.target.value})
     }
 
     handlePassChange = (e) => {
-        this.setState({pass: e.target.value});
+        this.setState({pass: e.target.value})
     }
 
     render() {
@@ -43,8 +43,8 @@ class Login extends Component<AppProps> {
                     <div className="form-b-2" onClick={this.login}>login</div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default Login;
+export default Login

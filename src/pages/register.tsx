@@ -1,9 +1,9 @@
-import * as React from 'react';
-import {Component} from 'react';
-import {api} from '../api/api';
-import AppProps from '../util/appProps';
-import {isEnter} from '../util/util';
-import './style.css';
+import * as React from 'react'
+import {Component} from 'react'
+import {api} from '../api/api'
+import AppProps from '../util/appProps'
+import {isEnter} from '../util/util'
+import './style.css'
 
 class Register extends Component<AppProps> {
 
@@ -12,29 +12,29 @@ class Register extends Component<AppProps> {
         pass: '',
         passConfirm: '',
         error: undefined
-    };
+    }
 
     register = async () => {
         try {
-            let success = await api.register(this.state.email, this.state.pass, this.state.passConfirm);
+            let success = await api.register(this.state.email, this.state.pass, this.state.passConfirm)
             if (success) {
-                this.props.history.push('/');
+                this.props.history.push('/')
             }
         } catch (error) {
-            this.setState({error: error.error});
+            this.setState({error: error.error})
         }
     }
 
     handleEmailChange = (e) => {
-        this.setState({email: e.target.value});
+        this.setState({email: e.target.value})
     }
 
     handlePassChange = (e) => {
-        this.setState({pass: e.target.value});
+        this.setState({pass: e.target.value})
     }
 
     handleConfirmChange = (e) => {
-        this.setState({passConfirm: e.target.value});
+        this.setState({passConfirm: e.target.value})
     }
 
     render() {
@@ -49,8 +49,8 @@ class Register extends Component<AppProps> {
                     <div className="form-b-2" onClick={this.register}>register</div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default Register;
+export default Register

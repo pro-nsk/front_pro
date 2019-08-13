@@ -1,73 +1,73 @@
-import * as React from 'react';
-import {Component} from 'react';
-import {Link} from 'react-router-dom';
-import './style.css';
-import AppProps from '../util/appProps';
-import {Post, api} from '../api/api';
-import {isAuthenticated} from '../util/util';
+import * as React from 'react'
+import {Component} from 'react'
+import {Link} from 'react-router-dom'
+import './style.css'
+import AppProps from '../util/appProps'
+import {Post, api} from '../api/api'
+import {isAuthenticated} from '../util/util'
 
-const pageSize = 5;
+const pageSize = 5
 
 class Posts extends Component<AppProps> {
 
     state = {
         posts: [],
         pageNumber: 0
-    };
+    }
 
     componentDidMount() {
-        this.loadData();
+        this.loadData()
     }
 
     async loadData() {
-        let posts = await api.posts();
-        this.setState({posts});
+        let posts = await api.posts()
+        this.setState({posts})
     }
 
     renderFeed(auth: boolean) {
-        let posts: Post[] = this.state.posts;
+        let posts: Post[] = this.state.posts
         return posts.map(post => {
             return (
                 <div key={post._id}>
                     <a href={post.url}><img key={post._id} src={post.url} /></a>
                     {auth && <div className="delete" onClick={() => this.deletePost(post._id)}>delete</div>}
                 </div>
-            );
-        }).slice(this.state.pageNumber * pageSize, (this.state.pageNumber * pageSize) + pageSize);
+            )
+        }).slice(this.state.pageNumber * pageSize, (this.state.pageNumber * pageSize) + pageSize)
     }
 
     next = () => {
-        this.setState({pageNumber: this.state.pageNumber + 1});
-        this.backToTop();
+        this.setState({pageNumber: this.state.pageNumber + 1})
+        this.backToTop()
     }
 
     prev = () => {
-        this.setState({pageNumber: this.state.pageNumber - 1});
-        this.backToTop();
+        this.setState({pageNumber: this.state.pageNumber - 1})
+        this.backToTop()
     }
 
     backToTop() {
-        let navBar = document.getElementById('top-bar');
-        navBar && navBar.scrollIntoView();
+        let navBar = document.getElementById('top-bar')
+        navBar && navBar.scrollIntoView()
     }
 
     isFirst() {
-        return this.state.pageNumber == 0;
+        return this.state.pageNumber == 0
     }
 
     isLast() {
-        let gg = this.state.posts.length / pageSize;
-        console.log(gg);
-        return (this.state.posts.length / pageSize) <= (this.state.pageNumber + 1);
+        let gg = this.state.posts.length / pageSize
+        console.log(gg)
+        return (this.state.posts.length / pageSize) <= (this.state.pageNumber + 1)
     }
 
     async deletePost(id: string) {
-        let ok = await api.delete(id);
-        ok && this.loadData();
+        let ok = await api.delete(id)
+        ok && this.loadData()
     }
 
     render() {
-        const auth = isAuthenticated();
+        const auth = isAuthenticated()
         return (
             <div className="home">
                 <div id="top-bar" className="top-bar">
@@ -88,8 +88,8 @@ class Posts extends Component<AppProps> {
                 <div className="copyright">© <a href="https://pro.nsk.ru">pro nsk</a>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
                 <a href="https://twitter.com/pro_nsk"><img className="twitter" src={'/images/twitter.png'} alt="" /></a>
             </div>
-        );
+        )
     }
 }
 
-export default Posts;
+export default Posts

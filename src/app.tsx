@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { Redirect, Route, Router, Switch } from 'react-router';
-import AppProps from './util/appProps';
-import CreatePost from './pages/createPost';
-import Posts from './pages/home';
-import Login from './pages/login';
-import Logout from './pages/logout';
-import Register from './pages/register';
+import * as React from 'react'
+import { Redirect, Route, Router, Switch } from 'react-router'
+import AppProps from './util/appProps'
+import CreatePost from './pages/createPost'
+import Posts from './pages/home'
+import Login from './pages/login'
+import Logout from './pages/logout'
+import Register from './pages/register'
 
 class App extends React.Component<AppProps> {
 
@@ -15,7 +15,7 @@ class App extends React.Component<AppProps> {
             logo: ''
         },
         loggedInUser: false
-    };
+    }
 
     render() {
         return (
@@ -29,8 +29,8 @@ class App extends React.Component<AppProps> {
                     <Redirect to="/" />
                 </Switch>
             </Router>
-        );
+        )
     }
 }
 
-export default App;
+export default App

@@ -1,9 +1,9 @@
 export interface ConfigurationParameters {
-    apiKey?: string | ((name: string) => string);
-    username?: string;
-    password?: string;
-    accessToken?: string | ((name: string, scopes?: string[]) => string);
-    basePath?: string;
+    apiKey?: string | ((name: string) => string)
+    username?: string
+    password?: string
+    accessToken?: string | ((name: string, scopes?: string[]) => string)
+    basePath?: string
 }
 
 export class Configuration {
@@ -43,10 +43,10 @@ export class Configuration {
     basePath?: string;
 
     constructor(param: ConfigurationParameters = {}) {
-        this.apiKey = param.apiKey;
-        this.username = param.username;
-        this.password = param.password;
-        this.accessToken = param.accessToken;
-        this.basePath = param.basePath;
+        this.apiKey = param.apiKey
+        this.username = param.username
+        this.password = param.password
+        this.accessToken = param.accessToken
+        this.basePath = param.basePath
     }
 }
