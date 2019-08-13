@@ -21,6 +21,12 @@ class App extends React.Component<AppProps> {
         return (
             <Router history={this.props.history}>
                 <Switch>
+                    {/* special routes */}
+                    <Route path='/post/:id' component={id => { 
+                        window.location.href = 'https://example.com/' + id
+                        return null
+                    }}/>
+                    {/* special routes */}
                     <Route path="/create" component={CreatePost} />
                     <Route path="/login" component={Login} />
                     <Route path="/logout" component={Logout} />
