@@ -1,3 +1,3 @@
 window.appConfig = {
-    endpoint: "pro.nsk.ru/api",
+    endpoint: "localhost:3042",
 };
