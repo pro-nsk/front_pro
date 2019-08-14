@@ -5,6 +5,7 @@ import CreatePost from './pages/createPost'
 import Posts from './pages/home'
 import Login from './pages/login'
 import Logout from './pages/logout'
+import RedirectPage from './pages/redirect'
 import Register from './pages/register'
 
 class App extends React.Component<AppProps> {
@@ -21,12 +22,9 @@ class App extends React.Component<AppProps> {
         return (
             <Router history={this.props.history}>
                 <Switch>
-                    {/* special routes */}
-                    <Route path='/post/:id' component={id => { 
-                        window.location.href = 'https://example.com/' + id
-                        return null
-                    }}/>
-                    {/* special routes */}
+                    {/* route to old site */}
+                    <Route path='/post/:id' component={RedirectPage}/>
+                    {/* route to old site */}
                     <Route path="/create" component={CreatePost} />
                     <Route path="/login" component={Login} />
                     <Route path="/logout" component={Logout} />
