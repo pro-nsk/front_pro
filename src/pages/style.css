@@ -122,3 +122,8 @@
     display: block;
     width: 50px;
 }
+
+.li {
+    margin: 0 auto 20px;
+    display: block;
+}
