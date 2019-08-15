@@ -6,7 +6,7 @@ import AppProps from '../util/appProps'
 import {Post, api} from '../api/api'
 import {isAuthenticated} from '../util/util'
 
-const pageSize = 5
+const pageSize = 10
 
 class Posts extends Component<AppProps> {
 
@@ -86,8 +86,8 @@ class Posts extends Component<AppProps> {
                     {!this.isLast() && <div className="next" onClick={this.next}>next</div>}
                 </div>
                 <div className="copyright">© <a href="https://pro.nsk.ru">pro nsk</a>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
-                <a href="//www.liveinternet.ru/click"><img className="li" src="//counter.yadro.ru/logo?17.5" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt="" width="88" height="31"/></a>
-                <a href="https://twitter.com/pro_nsk"><img className="twitter" src={'/images/twitter.png'} alt="" /></a>
+                <a className="li" href="//www.liveinternet.ru/click"><img src="//counter.yadro.ru/logo?17.5" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt=""/></a>
+                <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.png'} alt="" /></a>
             </div>
         )
     }
