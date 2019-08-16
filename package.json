@@ -26,7 +26,7 @@
     "build": "./node_modules/.bin/react-scripts-ts build",
     "test": "./node_modules/.bin/react-scripts-ts test --env=jsdom",
     "eject": "./node_modules/.bin/react-scripts-ts eject",
-    "archive": "7z a -tzip -mx5 -r0 -xr!config.js ./front.zip ./build/*"
+    "arch": "7z a -tzip -mx5 -r0 -xr!config.js ./front.zip ./build/*"
   },
   "devDependencies": {
     "react-scripts-ts": "2.12.0"
