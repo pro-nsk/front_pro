@@ -30,11 +30,14 @@ class Posts extends Component<AppProps> {
             return (
                 <div className="post" key={post._id}>
                     <a href={post.imageUrl}><img key={post._id} src={post.imageUrl} /></a>
-                    {post.text && <div className="text">{post.text.length > 500 ? post.text.substring(0,500) + '...' : post.text}</div>}
+                    {post.text && <div className="text">
+                        {post.text.length > 200 ? post.text.substring(0,200) + '... ' : post.text}
+                        {post.urlName && post.text.length > 200 && <Link className="view" to={`/${post.urlName}`} >more</Link>}
+                    </div>}
                     <div className="control">
+                        {post.urlName && <Link className="view" to={`/${post.urlName}`} >link</Link>}
                         {auth && <div className="delete" onClick={() => this.deletePost(post._id)}>delete</div>}
                         {auth && <Link className="edit" to={`/edit/${post._id}`} >edit</Link>}
-                        {post.urlName && <Link className="view" to={`/${post.urlName}`} >link</Link>}
                     </div>
                 </div>
             )
