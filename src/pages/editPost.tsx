@@ -8,8 +8,8 @@ import {isEnter} from '../util/util'
 class EditPost extends Component<AppProps> {
 
     state = {
-        url: '',
         urlName: undefined,
+        imageUrl: '',
         text: undefined,
         error: undefined
     }
@@ -27,7 +27,7 @@ class EditPost extends Component<AppProps> {
     edit = async () => {
         const id = this.props.match.params.id as string
         let post: Post = {
-            imageUrl: this.state.url,
+            imageUrl: this.state.imageUrl,
             urlName: this.state.urlName,
             text: this.state.text
         }
@@ -42,7 +42,7 @@ class EditPost extends Component<AppProps> {
     }
 
     handleUrlChange = (e) => {
-        this.setState({url: e.target.value})
+        this.setState({imageUrl: e.target.value})
     }
 
     handleUrlNameChange = (e) => {
@@ -58,7 +58,7 @@ class EditPost extends Component<AppProps> {
             <div className="pro-form">
                 {this.state.error && <div className="error">{this.state.error}</div>}
                 <input value={this.state.urlName} onChange={this.handleUrlNameChange} onKeyPress={e => isEnter(e) && this.edit()} />
-                <input value={this.state.url} onChange={this.handleUrlChange} onKeyPress={e => isEnter(e) && this.edit()} />
+                <input value={this.state.imageUrl} onChange={this.handleUrlChange} onKeyPress={e => isEnter(e) && this.edit()} />
                 <textarea value={this.state.text} onChange={this.handleTextChange} />
                 <div className="pro-buttons">
                     <div className="form-b-1" onClick={this.props.history.goBack}>cancel</div>

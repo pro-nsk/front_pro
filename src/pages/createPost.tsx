@@ -8,15 +8,15 @@ import {isEnter} from '../util/util'
 class CreatePost extends Component<AppProps> {
 
     state = {
-        url: '',
         urlName: undefined,
+        imageUrl: '',
         text: undefined,
         error: undefined
     }
 
     create = async () => {
         let post: Post = {
-            imageUrl: this.state.url,
+            imageUrl: this.state.imageUrl,
             urlName: this.state.urlName,
             text: this.state.text
         }
@@ -31,7 +31,7 @@ class CreatePost extends Component<AppProps> {
     }
 
     handleUrlChange = (e) => {
-        this.setState({url: e.target.value})
+        this.setState({imageUrl: e.target.value})
     }
 
     handleUrlNameChange = (e) => {
