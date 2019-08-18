@@ -28,9 +28,14 @@ class Posts extends Component<AppProps> {
         let posts: Post[] = this.state.posts
         return posts.map(post => {
             return (
-                <div key={post._id}>
-                    <a href={post.url}><img key={post._id} src={post.url} /></a>
-                    {auth && <div className="delete" onClick={() => this.deletePost(post._id)}>delete</div>}
+                <div className="post" key={post._id}>
+                    <a href={post.imageUrl}><img key={post._id} src={post.imageUrl} /></a>
+                    {post.text && <div className="text">{post.text.length > 500 ? post.text.substring(0,500) + '...' : post.text}</div>}
+                    <div className="control">
+                        {auth && <div className="delete" onClick={() => this.deletePost(post._id)}>delete</div>}
+                        {auth && <Link className="edit" to={`/edit/${post._id}`} >edit</Link>}
+                        {post.urlName && <Link className="view" to={`/${post.urlName}`} >link</Link>}
+                    </div>
                 </div>
             )
         }).slice(this.state.pageNumber * pageSize, (this.state.pageNumber * pageSize) + pageSize)
@@ -61,7 +66,7 @@ class Posts extends Component<AppProps> {
         return (this.state.posts.length / pageSize) <= (this.state.pageNumber + 1)
     }
 
-    async deletePost(id: string) {
+    async deletePost(id) {
         let ok = await api.delete(id)
         ok && this.loadData()
     }

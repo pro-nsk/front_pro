@@ -13,7 +13,7 @@
     color: gray;
 }
 
-.pro-form input {
+.pro-form input, .pro-form textarea {
     width: 300px;
     height: 50px;
     border: none;
@@ -23,8 +23,28 @@
     margin-bottom: 30px;
 }
 
-.pro-form input:focus {
+.pro-form input:focus,
+.pro-form textarea:focus {
     outline-width: 0;
+}
+
+.pro-form textarea {
+    height: 200px;
+    scrollbar-color: grey black;
+    scrollbar-width: thin;
+}
+
+.pro-form textarea::-webkit-scrollbar {
+    background-color: black;
+    width:6px
+}
+
+.pro-form textarea::-webkit-scrollbar-track {
+    background-color: black
+}
+
+.pro-form textarea::-webkit-scrollbar-thumb {
+    background-color: grey;
 }
 
 .pro-buttons {
@@ -55,6 +75,17 @@
     overflow: hidden;
 }
 
+.control {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.text {
+    margin: 0 auto 10px;
+    max-width: 1000px;
+    white-space: pre-line;
+}
+
 .create {
     float: left;
 }
@@ -80,9 +111,8 @@
     overflow: hidden;
 }
 
-.top-bar a {
+.top-bar a, .post a {
     color: grey;
-    text-decoration: underline;
 }
 
 .bottom-bar div, .delete {
@@ -98,8 +128,12 @@
     float: right;
 }
 
-.delete {
+.delete, .edit {
     float: right;
+}
+
+.edit {
+    margin-right: 20px;
 }
 
 .logo {

@@ -5,7 +5,7 @@ import {Post, api} from '../api/api'
 import './style.css'
 import {isEnter} from '../util/util'
 
-class CreatePost extends Component<AppProps> {
+class EditPost extends Component<AppProps> {
 
     state = {
         url: '',
@@ -14,14 +14,25 @@ class CreatePost extends Component<AppProps> {
         error: undefined
     }
 
-    create = async () => {
+    componentDidMount() {
+        const id = this.props.match.params.id as string
+        this.loadPost(id)
+    }
+
+    async loadPost(id) {
+        let post = await api.post(id)
+        this.setState({...post})
+    }
+
+    edit = async () => {
+        const id = this.props.match.params.id as string
         let post: Post = {
             imageUrl: this.state.url,
             urlName: this.state.urlName,
             text: this.state.text
         }
         try {
-            let posts = await api.create(post)
+            let posts = await api.edit(id, post)
             if (posts) {
                 this.props.history.push('/')
             }
@@ -46,16 +57,16 @@ class CreatePost extends Component<AppProps> {
         return (
             <div className="pro-form">
                 {this.state.error && <div className="error">{this.state.error}</div>}
-                <input onChange={this.handleUrlNameChange} onKeyPress={e => isEnter(e) && this.create()} />
-                <input onChange={this.handleUrlChange} onKeyPress={e => isEnter(e) && this.create()} />
-                <textarea onChange={this.handleTextChange} />
+                <input value={this.state.urlName} onChange={this.handleUrlNameChange} onKeyPress={e => isEnter(e) && this.edit()} />
+                <input value={this.state.url} onChange={this.handleUrlChange} onKeyPress={e => isEnter(e) && this.edit()} />
+                <textarea value={this.state.text} onChange={this.handleTextChange} />
                 <div className="pro-buttons">
                     <div className="form-b-1" onClick={this.props.history.goBack}>cancel</div>
-                    <div className="form-b-2" onClick={this.create}>create post</div>
+                    <div className="form-b-2" onClick={this.edit}>edit post</div>
                 </div>
             </div>
         )
     }
 }
 
-export default CreatePost
+export default EditPost

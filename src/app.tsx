@@ -7,17 +7,10 @@ import Login from './pages/login'
 import Logout from './pages/logout'
 import RedirectPage from './pages/redirect'
 import Register from './pages/register'
+import EditPost from './pages/editPost'
+import ViewPost from './pages/viewPost'
 
 class App extends React.Component<AppProps> {
-
-    state = {
-        user: {
-            name: '',
-            logo: ''
-        },
-        loggedInUser: false
-    }
-
     render() {
         return (
             <Router history={this.props.history}>
@@ -26,9 +19,11 @@ class App extends React.Component<AppProps> {
                     <Route path='/post/:id' component={RedirectPage}/>
                     {/* route to old site */}
                     <Route path="/create" component={CreatePost} />
+                    <Route path="/edit/:id" component={EditPost} />
                     <Route path="/login" component={Login} />
                     <Route path="/logout" component={Logout} />
                     <Route path="/register" component={Register} />
+                    <Route path="/:urlname" component={ViewPost} />
                     <Route path="/" component={Posts} />
                     <Redirect to="/" />
                 </Switch>

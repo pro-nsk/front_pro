@@ -1,10 +1,12 @@
-import { BaseApi, configuration } from './base/baseApi'
-import { processError } from './fetch'
+import {BaseApi, configuration} from './base/baseApi'
+import {processError} from './fetch'
 import {StorageKey} from '../util/storage'
 
 export interface Post {
-    _id: string
-    url: string
+    _id?: string
+    urlName?: string
+    imageUrl: string
+    text?: string
 }
 
 class Api extends BaseApi {
@@ -12,6 +14,26 @@ class Api extends BaseApi {
     async posts(): Promise<any> {
         try {
             let response = await this.fetch(configuration.basePath + '/post', {method: 'GET'})
+            let json = await response.json()
+            return Promise.resolve(json)
+        } catch (error) {
+            return processError(error)
+        }
+    }
+
+    async post(id: string): Promise<Post> {
+        try {
+            let response = await this.fetch(configuration.basePath + '/post/' + id, {method: 'GET'})
+            let json = await response.json()
+            return Promise.resolve(json)
+        } catch (error) {
+            return processError(error)
+        }
+    }
+
+    async postByUrlName(urlName: string): Promise<Post> {
+        try {
+            let response = await this.fetch(configuration.basePath + '/' + urlName, {method: 'GET'})
             let json = await response.json()
             return Promise.resolve(json)
         } catch (error) {
@@ -28,6 +50,25 @@ class Api extends BaseApi {
 
         try {
             let response = await this.fetch(configuration.basePath + '/post', options)
+            if (response) {
+                return Promise.resolve(true)
+            } else {
+                return Promise.resolve(false)
+            }
+        } catch (e) {
+            return processError(e)
+        }
+    }
+
+    async edit(id: string, post: Post): Promise<boolean> {
+
+        const options: RequestInit = {
+            method: 'PUT',
+            body: JSON.stringify(post)
+        }
+
+        try {
+            let response = await this.fetch(configuration.basePath + '/post/' + id, options)
             if (response) {
                 return Promise.resolve(true)
             } else {
