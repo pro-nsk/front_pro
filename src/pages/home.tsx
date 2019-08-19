@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import './style.css'
 import AppProps from '../util/appProps'
 import {Post, api} from '../api/api'
-import {isAuthenticated, SITE_NAME} from '../util/util'
+import {isAuthenticated, SITE_NAME, stripHtml} from '../util/util'
 
 const pageSize = 10
 
@@ -32,7 +32,7 @@ class Posts extends Component<AppProps> {
                 <div className="post" key={post._id}>
                     <a href={post.imageUrl}><img key={post._id} src={post.imageUrl} /></a>
                     {post.text && <div className="text">
-                        {post.text.length > 200 ? post.text.substring(0,200) + '... ' : post.text}
+                        {post.text.length > 200 ? stripHtml(post.text).substring(0,200) + '... ' : post.text}
                         {post.urlName && post.text.length > 200 && <Link className="view" to={`/${post.urlName}`} >more</Link>}
                     </div>}
                     <div className="control">

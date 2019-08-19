@@ -3,7 +3,7 @@ import {Component} from 'react'
 import AppProps from '../util/appProps'
 import {api} from '../api/api'
 import './style.css'
-import {isAuthenticated, SITE_NAME} from '../util/util'
+import {isAuthenticated, SITE_NAME, stripHtml} from '../util/util'
 import {Link} from 'react-router-dom'
 
 class ViewPost extends Component<AppProps> {
@@ -24,12 +24,23 @@ class ViewPost extends Component<AppProps> {
     async loadPost(urlName) {
         let post = await api.postByUrlName(urlName)
         this.setState({...post})
-        document.title = post.text ? post.text.substring(0,50) + '... - motors' : SITE_NAME
+
+        let title = post.text ? stripHtml(post.text).substring(0,50) + '... - motors' : SITE_NAME
+        document.title = title
+
+        this.injectPostHtml(post.text)
     }
 
     async deletePost(id) {
         let ok = await api.delete(id)
         ok && this.props.history.push('/')
+    }
+
+    injectPostHtml(text) {
+        let div = document.getElementById('text')
+        if (div) {
+            div.innerHTML = text
+        }
     }
 
     render() {
@@ -47,7 +58,7 @@ class ViewPost extends Component<AppProps> {
                 <div className="post-list">
                     <div className="post">
                         <a href={this.state.imageUrl}><img src={this.state.imageUrl} /></a>
-                        {this.state.text && <div className="text">{this.state.text}</div>}
+                        {this.state.text && <div id="text" className="text"></div>}
                         <div className="control">
                             {auth && <div className="delete" onClick={() => this.deletePost(this.state._id)}>delete</div>}
                             {auth && <Link className="edit" to={`/edit/${this.state._id}`} >edit</Link>}
