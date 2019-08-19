@@ -13,3 +13,5 @@ export function isEnter(e) {
     }
     return false
 }
+
+export const SITE_NAME = 'motors - novosibirsk+'

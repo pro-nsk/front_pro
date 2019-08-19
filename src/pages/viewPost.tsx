@@ -3,7 +3,7 @@ import {Component} from 'react'
 import AppProps from '../util/appProps'
 import {api} from '../api/api'
 import './style.css'
-import {isAuthenticated} from '../util/util'
+import {isAuthenticated, SITE_NAME} from '../util/util'
 import {Link} from 'react-router-dom'
 
 class ViewPost extends Component<AppProps> {
@@ -24,6 +24,7 @@ class ViewPost extends Component<AppProps> {
     async loadPost(urlName) {
         let post = await api.postByUrlName(urlName)
         this.setState({...post})
+        document.title = post.text ? post.text.substring(0,50) + '... - motors' : SITE_NAME
     }
 
     async deletePost(id) {

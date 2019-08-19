@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import './style.css'
 import AppProps from '../util/appProps'
 import {Post, api} from '../api/api'
-import {isAuthenticated} from '../util/util'
+import {isAuthenticated, SITE_NAME} from '../util/util'
 
 const pageSize = 10
 
@@ -16,6 +16,7 @@ class Posts extends Component<AppProps> {
     }
 
     componentDidMount() {
+        document.title = SITE_NAME
         this.loadData()
     }
 
