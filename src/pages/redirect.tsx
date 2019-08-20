@@ -3,7 +3,8 @@ import AppProps from '../util/appProps'
 
 const existingPostMap = {
     171680485423: '/bike-zima',
-    176941091103: '/obskoe-shtorm'
+    176941091103: '/obskoe-shtorm',
+    37039693600: '/iskitim-zavod'
 }
 
 class Redirect extends React.Component<AppProps> {
