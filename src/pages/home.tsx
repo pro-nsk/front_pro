@@ -5,6 +5,7 @@ import './style.css'
 import AppProps from '../util/appProps'
 import {Post, api} from '../api/api'
 import {isAuthenticated, SITE_NAME, stripHtml} from '../util/util'
+import Loading from './loading'
 
 const pageSize = 10
 
@@ -12,7 +13,8 @@ class Posts extends Component<AppProps> {
 
     state = {
         posts: [],
-        pageNumber: 0
+        pageNumber: 0,
+        ready: false
     }
 
     componentDidMount() {
@@ -22,7 +24,8 @@ class Posts extends Component<AppProps> {
 
     async loadData() {
         let posts = await api.posts()
-        this.setState({posts})
+        let ready = true
+        this.setState({posts, ready})
     }
 
     renderFeed(auth: boolean) {
@@ -32,7 +35,7 @@ class Posts extends Component<AppProps> {
                 <div className="post" key={post._id}>
                     <a href={post.imageUrl}><img key={post._id} src={post.imageUrl} /></a>
                     {post.text && <div className="text">
-                        {post.text.length > 200 ? stripHtml(post.text).substring(0,200) + '... ' : stripHtml(post.text)}
+                        {post.text.length > 200 ? stripHtml(post.text.substring(0,200)) + '... ' : stripHtml(post.text)}
                         {post.urlName && post.text.length > 200 && <Link className="view" to={`/${post.urlName}`} >more</Link>}
                     </div>}
                     <div className="control">
@@ -77,7 +80,7 @@ class Posts extends Component<AppProps> {
 
     render() {
         const auth = isAuthenticated()
-        return (
+        return this.state.ready ? (
             <div className="home">
                 <div id="top-bar" className="top-bar">
                     {auth && <Link className="create" to="/create" >create</Link>}
@@ -98,7 +101,7 @@ class Posts extends Component<AppProps> {
                 <a className="li" href="//www.liveinternet.ru/click"><img src="//counter.yadro.ru/logo?17.5" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt=""/></a>
                 <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.png'} alt="" /></a>
             </div>
-        )
+        ) : <Loading/>
     }
 }
 

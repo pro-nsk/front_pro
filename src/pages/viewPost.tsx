@@ -5,6 +5,7 @@ import {api} from '../api/api'
 import './style.css'
 import {isAuthenticated, SITE_NAME, stripHtml} from '../util/util'
 import {Link} from 'react-router-dom'
+import Loading from './loading'
 
 class ViewPost extends Component<AppProps> {
 
@@ -13,7 +14,8 @@ class ViewPost extends Component<AppProps> {
         urlName: undefined,
         imageUrl: '',
         text: undefined,
-        error: undefined
+        error: undefined,
+        ready: false
     }
 
     componentDidMount() {
@@ -23,9 +25,10 @@ class ViewPost extends Component<AppProps> {
 
     async loadPost(urlName) {
         let post = await api.postByUrlName(urlName)
-        this.setState({...post})
+        let ready = true
+        this.setState({...post, ready})
 
-        let title = post.text ? stripHtml(post.text).substring(0,50) + '... - motors' : SITE_NAME
+        let title = post.text ? stripHtml(post.text.substring(0,50)) + '... - motors' : SITE_NAME
         document.title = title
 
         this.injectPostHtml(post.text)
@@ -45,7 +48,7 @@ class ViewPost extends Component<AppProps> {
 
     render() {
         const auth = isAuthenticated()
-        return (
+        return this.state.ready ? (
             <div className="home">
                 <div id="top-bar" className="top-bar">
                     {auth && <Link className="create" to="/create" >create</Link>}
@@ -69,7 +72,7 @@ class ViewPost extends Component<AppProps> {
                 <a className="li" href="//www.liveinternet.ru/click"><img src="//counter.yadro.ru/logo?17.5" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt="" /></a>
                 <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.png'} alt="" /></a>
             </div>
-        )
+        ) : <Loading/>
     }
 }
 
