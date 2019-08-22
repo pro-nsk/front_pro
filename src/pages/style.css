@@ -183,7 +183,7 @@
 /* сердце */
 #heart {
     margin: 0 auto;
-    animation: b 1.5s ease-in-out infinite;
+    animation: b 0.5s ease-in-out infinite;
     display: block;
 }
   
@@ -194,11 +194,11 @@
     -webkit-transform: scale(1, 1);
     transform: scale(1, 1);
   }
-  50% {
-    -moz-transform: scale(1.1, 1.1);
-    -ms-transform: scale(1.1, 1.1);
-    -webkit-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
+  10% {
+    -moz-transform: scale(1.2, 1.2);
+    -ms-transform: scale(1.2, 1.2);
+    -webkit-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
   }
   100% {
     -moz-transform: scale(1, 1);
