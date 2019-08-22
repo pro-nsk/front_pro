@@ -36,7 +36,7 @@ class Posts extends Component<AppProps> {
                     <a href={post.imageUrl}><img key={post._id} src={post.imageUrl} /></a>
                     {post.text && <div className="text">
                         {stripHtml(post.text)}
-                        {post.urlName && post.text.substring(post.text.length - 4, post.text.length) == '... ' && <Link className="view" to={`/${post.urlName}`} >more</Link>}
+                        {post.urlName && post.text.length > 200 && <Link className="view" to={`/${post.urlName}`} >more</Link>}
                     </div>}
                     <div className="control">
                         {post.urlName && <Link className="view" to={`/${post.urlName}`} >link</Link>}
