@@ -21,3 +21,8 @@ export function stripHtml(html) {
     tempDiv.innerHTML = html
     return tempDiv.textContent || tempDiv.innerText || ''
 }
+
+export function backToTop() {
+    let navBar = document.getElementById('top-bar')
+    navBar && navBar.scrollIntoView()
+}

@@ -3,7 +3,7 @@ import {Component} from 'react'
 import AppProps from '../util/appProps'
 import {api} from '../api/api'
 import './style.css'
-import {isAuthenticated, SITE_NAME, stripHtml} from '../util/util'
+import {isAuthenticated, SITE_NAME, stripHtml, backToTop} from '../util/util'
 import {Link} from 'react-router-dom'
 import Loading from './loading'
 
@@ -56,6 +56,7 @@ class ViewPost extends Component<AppProps> {
                         <Link className="auth" to="/logout" >logout</Link> :
                         <Link className="auth" to="/login" >login</Link>
                     }
+                    <div className='up' onClick={() => backToTop()}>up</div>
                 </div>
                 <img className="logo" src={'/images/logo.png'} alt="" onClick={() => this.props.history.push('/')} />
                 <div className="post-list">

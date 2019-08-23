@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import './style.css'
 import AppProps from '../util/appProps'
 import {Post, api} from '../api/api'
-import {isAuthenticated, SITE_NAME, stripHtml} from '../util/util'
+import {isAuthenticated, SITE_NAME, stripHtml, backToTop} from '../util/util'
 import Loading from './loading'
 
 const pageSize = 10
@@ -50,22 +50,17 @@ class Posts extends Component<AppProps> {
 
     next = () => {
         this.setState({pageNumber: this.state.pageNumber + 1})
-        this.backToTop()
+        backToTop()
     }
 
     prev = () => {
         this.setState({pageNumber: this.state.pageNumber - 1})
-        this.backToTop()
-    }
-
-    backToTop() {
-        let navBar = document.getElementById('top-bar')
-        navBar && navBar.scrollIntoView()
+        backToTop()
     }
 
     resetHome() {
         this.setState({pageNumber: 0})
-        this.backToTop()
+        backToTop()
     }
 
     isFirst() {
@@ -93,6 +88,7 @@ class Posts extends Component<AppProps> {
                         <Link className="auth" to="/logout" >logout</Link> :
                         <Link className="auth" to="/login" >login</Link>
                     }
+                    <div className='up' onClick={() => backToTop()}>up</div>
                 </div>
                 <img className="logo" src={'/images/logo.png'} alt="" onClick={() => this.setState({pageNumber: 0})} />
                 <div className="post-list">

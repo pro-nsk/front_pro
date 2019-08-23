@@ -100,7 +100,7 @@
 }
 
 .top-bar {
-    margin-top: 20px;
+    padding-top: 20px;
     /*null height with float divs hack*/
     overflow: hidden;
 }
@@ -208,4 +208,11 @@
     -webkit-transform: scale(1, 1);
     transform: scale(1, 1);
   }
+}
+
+.up {
+    position: fixed;
+    right: 20px;
+    cursor: pointer;
+    text-decoration: underline;
 }
