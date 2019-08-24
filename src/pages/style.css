@@ -86,14 +86,6 @@
     white-space: pre-line;
 }
 
-.create {
-    float: left;
-}
-
-.auth {
-    float: right;
-}
-
 .top-bar, .bottom-bar {
     max-width: 1000px;
     margin: 0 auto;
@@ -101,8 +93,35 @@
 
 .top-bar {
     padding-top: 20px;
-    /*null height with float divs hack*/
-    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+#menu {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#menu > ul {
+    visibility: hidden;
+    list-style: none;
+    padding: 5px 8px 5px 8px;
+    margin: -21px 0 0 40px;
+    opacity: 0;
+	transition-duration: 0.1s; 
+    position: absolute;
+    background-color: black;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #FFFFFF;
+}
+
+#menu a {
+    display: block;
+    text-decoration: none;
+}
+
+.create {
+    margin-left: 5px;
 }
 
 .bottom-bar {

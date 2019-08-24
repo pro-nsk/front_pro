@@ -19,6 +19,7 @@ class Posts extends Component<AppProps> {
 
     componentDidMount() {
         document.title = SITE_NAME
+        document.onclick = this.clickHandler
         this.loadData()
     }
 
@@ -73,6 +74,31 @@ class Posts extends Component<AppProps> {
         return (this.state.posts.length / pageSize) <= (this.state.pageNumber + 1)
     }
 
+    clickHandler = e => {
+        let menu = document.getElementById('menu')
+        let list = document.getElementById('post-list')
+        if (e.target == menu) {
+            if (list) {
+                list.style.visibility = 'visible'
+                list.style.opacity = '1'
+            }
+        } else {
+            if (list) {
+                list.style.visibility = 'hidden'
+                list.style.opacity = '0'
+            }
+        }
+    }
+
+    renderMenu() {
+        let posts: Post[] = this.state.posts
+        return posts.filter(post => post.urlName != undefined).map(post => {
+            return (
+                <li key={post.urlName}><Link to={'/' + post.urlName} >{'/' + post.urlName}</Link></li>
+            )
+        })
+    }
+
     async deletePost(id) {
         let ok = await api.delete(id)
         ok && this.loadData()
@@ -83,6 +109,9 @@ class Posts extends Component<AppProps> {
         return this.state.ready ? (
             <div className="home">
                 <div id="top-bar" className="top-bar">
+                    <div id="menu">menu
+                        <ul id='post-list'>{this.renderMenu()}</ul>
+                    </div>
                     {auth && <Link className="create" to="/create" >create</Link>}
                     {auth ?
                         <Link className="auth" to="/logout" >logout</Link> :
@@ -98,10 +127,10 @@ class Posts extends Component<AppProps> {
                     {!this.isLast() && <div className="next" onClick={this.next}>next</div>}
                 </div>
                 <div className="copyright">© <div onClick={() => this.resetHome()} >pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
-                <a className="li" href="//www.liveinternet.ru/click"><img src="//counter.yadro.ru/logo?17.5" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt=""/></a>
+                <a className="li" href="//www.liveinternet.ru/click"><img src="//counter.yadro.ru/logo?17.5" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt="" /></a>
                 <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.png'} alt="" /></a>
             </div>
-        ) : <Loading/>
+        ) : <Loading />
     }
 }
 
