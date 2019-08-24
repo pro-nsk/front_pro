@@ -20,6 +20,7 @@ class Posts extends Component<AppProps> {
     componentDidMount() {
         document.title = SITE_NAME
         document.onclick = this.clickHandler
+        document.ontouchstart = this.clickHandler
         this.loadData()
     }
 
