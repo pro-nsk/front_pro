@@ -88,7 +88,6 @@ class Posts extends Component<AppProps> {
                         <Link className="auth" to="/logout" >logout</Link> :
                         <Link className="auth" to="/login" >login</Link>
                     }
-                    <div className='up' onClick={() => backToTop()}>up</div>
                 </div>
                 <img className="logo" src={'/images/logo.png'} alt="" onClick={() => this.setState({pageNumber: 0})} />
                 <div className="post-list">
