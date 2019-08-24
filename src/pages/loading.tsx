@@ -5,7 +5,7 @@ class Loading extends React.Component<AppProps> {
     render() {
         return (
             <div className='loading'>
-                <img src={'/images/logo.png'} id="heart" />
+                <img src={'/images/logo.png'} id="logo-animate" />
             </div>
         )
     }

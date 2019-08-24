@@ -51,7 +51,6 @@ class ViewPost extends Component<AppProps> {
         return this.state.ready ? (
             <div className="home">
                 <div id="top-bar" className="top-bar">
-                    <div id="menu"></div>
                     {auth && <Link className="create" to="/create" >create</Link>}
                     {auth ?
                         <Link className="auth" to="/logout" >logout</Link> :

@@ -47,6 +47,11 @@
     background-color: grey;
 }
 
+#menu, .bottom-bar div, .delete, .copyright div  {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .pro-buttons {
     width: 200px;
 }
@@ -94,19 +99,21 @@
 .top-bar {
     padding-top: 20px;
     display: flex;
-    justify-content: space-between;
+}
+
+.auth {
+    margin-left: auto;
 }
 
 #menu {
-    cursor: pointer;
-    text-decoration: underline;
+    margin-right: 10px;
 }
 
 #menu > ul {
     visibility: hidden;
     list-style: none;
     padding: 5px 8px 5px 8px;
-    margin: -21px 0 0 40px;
+    margin: 10px 0 0 5px;
     opacity: 0;
 	transition-duration: 0.1s; 
     position: absolute;
@@ -120,10 +127,6 @@
     text-decoration: none;
 }
 
-.create {
-    margin-left: 5px;
-}
-
 .bottom-bar {
     margin-bottom: 30px;
     /*null height with float divs hack*/
@@ -132,11 +135,6 @@
 
 .top-bar a, .post a {
     color: grey;
-}
-
-.bottom-bar div, .delete {
-    cursor: pointer;
-    text-decoration: underline;
 }
 
 .prev {
@@ -168,8 +166,6 @@
 
 .copyright div {
     display: inline;
-    cursor: pointer;
-    text-decoration: underline;
 }
 
 .twitter {
@@ -201,8 +197,7 @@
     height: 100vh;
 }
 
-/* сердце */
-#heart {
+#logo-animate {
     margin: 0 auto;
     animation: b 0.5s ease-in-out infinite;
     display: block;
@@ -232,6 +227,4 @@
 .up {
     position: fixed;
     right: 20px;
-    cursor: pointer;
-    text-decoration: underline;
 }
