@@ -24,14 +24,18 @@ class ViewPost extends Component<AppProps> {
     }
 
     async loadPost(urlName) {
-        let post = await api.postByUrlName(urlName)
-        let ready = true
-        this.setState({...post, ready})
+        try {
+            let post = await api.postByUrlName(urlName)
+            let ready = true
+            this.setState({...post, ready})
 
-        let title = post.text ? stripHtml(post.text.substring(0,50)) + '... - motors' : SITE_NAME
-        document.title = title
+            let title = post.text ? stripHtml(post.text.substring(0, 50)) + '... - motors' : SITE_NAME
+            document.title = title
 
-        this.injectPostHtml(post.text)
+            this.injectPostHtml(post.text)
+        } catch (err) {
+            this.setState({error: err.error, ready: true})
+        }
     }
 
     async deletePost(id) {
@@ -58,6 +62,7 @@ class ViewPost extends Component<AppProps> {
                     }
                 </div>
                 <img className="logo" src={'/images/logo.png'} alt="" onClick={() => this.props.history.push('/')} />
+                {this.state.error && <div className="error">{this.state.error}</div>}
                 <div className="post-list">
                     <div className="post">
                         <a href={this.state.imageUrl}><img src={this.state.imageUrl} /></a>
@@ -72,7 +77,7 @@ class ViewPost extends Component<AppProps> {
                 <a className="li" href="//www.liveinternet.ru/click"><img src="//counter.yadro.ru/logo?17.5" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt="" /></a>
                 <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.png'} alt="" /></a>
             </div>
-        ) : <Loading/>
+        ) : <Loading />
     }
 }
 
