@@ -127,7 +127,7 @@ class Posts extends Component<AppProps> {
                     {!this.isFirst() && <div className="prev" onClick={this.prev}>prev</div>}
                     {!this.isLast() && <div className="next" onClick={this.next}>next</div>}
                 </div>
-                <div className="copyright">© <div onClick={() => this.resetHome()} >pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
+                <div className="copyright">© <div onClick={() => this.resetHome()} ><img id="copyright-logo" src={'/images/logo.png'} alt=""/>pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
                 <a className="li" href="//www.liveinternet.ru/click"><img src="//counter.yadro.ru/logo?17.5" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt="" /></a>
                 {/* <img className='ya' src="https://informer.yandex.ru/informer/52259428/3_0_999999FF_999999FF_0_pageviews"  alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"/> */}
                 <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.png'} alt="" /></a>

@@ -234,3 +234,8 @@
     position: fixed;
     right: 20px;
 }
+
+#copyright-logo {
+    margin-bottom: -7px;
+    width: 22px;
+}
