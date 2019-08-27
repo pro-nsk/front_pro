@@ -176,25 +176,8 @@
 }
 
 .twitter img {
-    width: 50px;
+    width: 30px;
 }
-
-.li {
-    margin: 0 auto 20px;
-    display: block;
-    width: 88px;
-    height: 31px;
-}
-
-.li img {
-    width: 88px;
-    height: 31px;
-}
-
-/* .ya {
-    margin: 0 auto;
-    display: block;
-} */
 
 .loading {
     display: flex;
