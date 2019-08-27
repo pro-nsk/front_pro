@@ -73,7 +73,7 @@ class ViewPost extends Component<AppProps> {
                         </div>
                     </div>
                 </div>
-                <div className="copyright">© <div onClick={() => this.props.history.push('/')} >pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
+                <div className="copyright">© <div onClick={() => this.props.history.push('/')} ><img id="copyright-logo" src={'/images/logo.png'} alt=""/>pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
                 <a className="li" href="//www.liveinternet.ru/click"><img src="//counter.yadro.ru/logo?17.5" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt="" /></a>
                 <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.png'} alt="" /></a>
             </div>
