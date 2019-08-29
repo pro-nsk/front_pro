@@ -32,7 +32,7 @@ class Redirect extends React.Component<AppProps> {
         if (newUrl) {
             this.props.history.push(newUrl)
         } else {
-            window.location.href = 'https://blog.pro.nsk.ru/post/' + id
+            this.props.history.push('/not-found')
         }
     }
 
