@@ -1,15 +1,20 @@
 {
-  "short_name": "cp",
+  "short_name": "motors",
   "name": "motors - novosibirsk+",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "16x16",
+      "sizes": "100x100",
       "type": "image/ico"
+    },
+    {
+      "src": "images/logo.png",
+      "sizes": "100x100",
+      "type": "image/png"
     }
   ],
   "start_url": "./index.html",
-  "display": "standalone",
+  "display": "fullscreen",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#000000"
 }
