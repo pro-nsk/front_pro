@@ -15,7 +15,7 @@ class ViewPost extends Component<AppProps> {
         imageUrl: '',
         text: undefined,
         error: undefined,
-        ready: false
+        ready: false,
     }
 
     componentDidMount() {
