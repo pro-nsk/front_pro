@@ -1,3 +1,3 @@
 export const env = {
-    endpoint: location.protocol + '//' + window['appConfig'].endpoint.replace(/\s/g, '')
+    endpoint: location.protocol + '//' + process.env.REACT_APP_ENDPOINT
 }
