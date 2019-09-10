@@ -3,11 +3,6 @@
   "name": "motors - novosibirsk+",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "100x100",
-      "type": "image/ico"
-    },
-    {
       "src": "images/logo.png",
       "sizes": "100x100",
       "type": "image/png"

@@ -26,7 +26,7 @@
     "build": "./node_modules/.bin/react-scripts-ts build",
     "test": "./node_modules/.bin/react-scripts-ts test --env=jsdom",
     "eject": "./node_modules/.bin/react-scripts-ts eject",
-    "arch": "del front.zip && 7z a -tzip -mx5 -r0 -xr!config.js -xr!qa.js ./front.zip ./build/*",
+    "arch": "del front.zip && 7z a -tzip -mx5 -r0 ./front.zip ./build/*",
     "dev-start": "copy .\\.env.dev .\\.env && yarn start",
     "pro-build": "copy .\\.env.pro .\\.env && yarn build"
   },
