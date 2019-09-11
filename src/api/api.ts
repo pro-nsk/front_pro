@@ -11,9 +11,19 @@ export interface Post {
 
 class Api extends BaseApi {
 
-    async posts(): Promise<any> {
+    async home(page: number): Promise<any> {
         try {
-            let response = await this.fetch(configuration.basePath + '/post', {method: 'GET'})
+            let response = await this.fetch(configuration.basePath + '/home/' + page, {method: 'GET'})
+            let json = await response.json()
+            return Promise.resolve(json)
+        } catch (error) {
+            return processError(error)
+        }
+    }
+
+    async menu(): Promise<any> {
+        try {
+            let response = await this.fetch(configuration.basePath + '/menu', {method: 'GET'})
             let json = await response.json()
             return Promise.resolve(json)
         } catch (error) {

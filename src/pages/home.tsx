@@ -6,26 +6,26 @@ import AppProps from '../util/appProps'
 import {Post, api} from '../api/api'
 import {isAuthenticated, SITE_NAME, stripHtml, backToTop} from '../util/util'
 import Loading from './loading'
+import Menu from '../components/menu'
 
-const pageSize = 10
+const PAGE_SIZE = 10
 
 class Posts extends Component<AppProps> {
 
     state = {
         posts: [],
+        menu: [],
         pageNumber: 0,
         ready: false
     }
 
     componentDidMount() {
         document.title = SITE_NAME
-        document.onclick = this.clickHandler
-        document.ontouchstart = this.clickHandler
         this.loadData()
     }
 
     async loadData() {
-        let posts = await api.posts()
+        let posts = await api.home(this.state.pageNumber)
         let ready = true
         this.setState({posts, ready})
     }
@@ -47,21 +47,21 @@ class Posts extends Component<AppProps> {
                     </div>
                 </div>
             )
-        }).slice(this.state.pageNumber * pageSize, (this.state.pageNumber * pageSize) + pageSize)
+        })
     }
 
     next = () => {
-        this.setState({pageNumber: this.state.pageNumber + 1})
+        this.loadPage(this.state.pageNumber + 1)
         backToTop()
     }
 
     prev = () => {
-        this.setState({pageNumber: this.state.pageNumber - 1})
+        this.loadPage(this.state.pageNumber - 1)
         backToTop()
     }
 
     resetHome() {
-        this.setState({pageNumber: 0})
+        this.loadPage(0)
         backToTop()
     }
 
@@ -70,34 +70,11 @@ class Posts extends Component<AppProps> {
     }
 
     isLast() {
-        let gg = this.state.posts.length / pageSize
-        console.log(gg)
-        return (this.state.posts.length / pageSize) <= (this.state.pageNumber + 1)
+        return this.state.posts.length < PAGE_SIZE
     }
 
-    clickHandler = e => {
-        let menu = document.getElementById('menu')
-        let list = document.getElementById('post-list')
-        if (e.target == menu) {
-            if (list) {
-                list.style.visibility = 'visible'
-                list.style.opacity = '1'
-            }
-        } else {
-            if (list) {
-                list.style.visibility = 'hidden'
-                list.style.opacity = '0'
-            }
-        }
-    }
-
-    renderMenu() {
-        let posts: Post[] = this.state.posts
-        return posts.filter(post => post.urlName != undefined).map(post => {
-            return (
-                <li key={post.urlName}><Link to={'/' + post.urlName} >{'/' + post.urlName}</Link></li>
-            )
-        })
+    loadPage(pageNumber: number) {
+        this.setState({pageNumber}, () => this.loadData())
     }
 
     async deletePost(id) {
@@ -110,16 +87,14 @@ class Posts extends Component<AppProps> {
         return this.state.ready ? (
             <div className="home">
                 <div id="top-bar" className="top-bar">
-                    <div id="menu">menu
-                        <ul id='post-list'>{this.renderMenu()}</ul>
-                    </div>
+                    <Menu gotoFunc={url => this.props.history.push(url)}/>
                     {auth && <Link className="create" to="/create" >create</Link>}
                     {auth ?
                         <Link className="auth" to="/logout" >logout</Link> :
                         <Link className="auth" to="/login" >login</Link>
                     }
                 </div>
-                <img className="logo" src={'/images/logo.png'} alt="" onClick={() => this.setState({pageNumber: 0})} />
+                <img className="logo" src={'/images/logo.png'} alt="" onClick={() => this.loadPage(0)} />
                 <div className="post-list">
                     {this.renderFeed(auth)}
                 </div>

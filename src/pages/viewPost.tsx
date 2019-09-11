@@ -6,6 +6,7 @@ import './style.css'
 import {isAuthenticated, SITE_NAME, stripHtml} from '../util/util'
 import {Link} from 'react-router-dom'
 import Loading from './loading'
+import Menu from '../components/menu'
 
 class ViewPost extends Component<AppProps> {
 
@@ -50,11 +51,17 @@ class ViewPost extends Component<AppProps> {
         }
     }
 
+    postUpdate(url) {
+        this.props.history.replace(url)
+        this.loadPost(url)
+    }
+
     render() {
         const auth = isAuthenticated()
         return this.state.ready ? (
             <div className="home">
                 <div id="top-bar" className="top-bar">
+                    <Menu gotoFunc={url => this.postUpdate(url)}/>
                     {auth && <Link className="create" to="/create" >create</Link>}
                     {auth ?
                         <Link className="auth" to="/logout" >logout</Link> :
