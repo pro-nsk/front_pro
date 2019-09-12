@@ -1,12 +1,13 @@
 import * as React from 'react'
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
-import './style.css'
-import AppProps from '../util/appProps'
-import {Post, api} from '../api/api'
-import {isAuthenticated, SITE_NAME, stripHtml, backToTop} from '../util/util'
-import Loading from './loading'
+import {api, Post} from '../api/api'
 import Menu from '../components/menu'
+import PostComponent from '../components/post'
+import AppProps from '../util/appProps'
+import {backToTop, isAuthenticated, SITE_NAME} from '../util/util'
+import Loading from './loading'
+import './style.css'
 
 const PAGE_SIZE = 10
 
@@ -30,24 +31,9 @@ class Posts extends Component<AppProps> {
         this.setState({posts, ready})
     }
 
-    renderFeed(auth: boolean) {
+    renderFeed() {
         let posts: Post[] = this.state.posts
-        return posts.map(post => {
-            return (
-                <div className="post" key={post._id}>
-                    <a href={post.imageUrl}><img key={post._id} src={post.imageUrl} /></a>
-                    {post.text && <div className="text">
-                        {stripHtml(post.text)}
-                        {post.urlName && post.text.length > 200 && <Link className="view" to={`/${post.urlName}`} >more</Link>}
-                    </div>}
-                    <div className="control">
-                        {post.urlName && <Link className="view" to={`/${post.urlName}`} >link</Link>}
-                        {auth && <div className="delete" onClick={() => this.deletePost(post._id)}>delete</div>}
-                        {auth && <Link className="edit" to={`/edit/${post._id}`} >edit</Link>}
-                    </div>
-                </div>
-            )
-        })
+        return posts.map(post => <PostComponent key={post._id} post={post} deletePost={this.deletePost} strip more/>)
     }
 
     next = () => {
@@ -77,7 +63,7 @@ class Posts extends Component<AppProps> {
         this.setState({pageNumber, ready: false}, () => this.loadData())
     }
 
-    async deletePost(id) {
+    deletePost = async (id) => {
         let ok = await api.delete(id)
         ok && this.loadData()
     }
@@ -87,7 +73,7 @@ class Posts extends Component<AppProps> {
         return this.state.ready ? (
             <div className="home">
                 <div id="top-bar" className="top-bar">
-                    <Menu gotoFunc={url => this.props.history.push(url)}/>
+                    <Menu gotoFunc={url => this.props.history.push(url)} />
                     {auth && <Link className="create" to="/create" >create</Link>}
                     {auth ?
                         <Link className="auth" to="/logout" >logout</Link> :
@@ -96,13 +82,13 @@ class Posts extends Component<AppProps> {
                 </div>
                 <img className="logo" src={'/images/logo.png'} alt="" onClick={() => this.loadPage(0)} />
                 <div className="post-list">
-                    {this.renderFeed(auth)}
+                    {this.renderFeed()}
                 </div>
                 <div className="bottom-bar">
                     {!this.isFirst() && <div className="prev" onClick={this.prev}>prev</div>}
                     {!this.isLast() && <div className="next" onClick={this.next}>next</div>}
                 </div>
-                <div className="copyright">© <div onClick={() => this.resetHome()} ><img id="copyright-logo" src={'/images/logo.png'} alt=""/>pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
+                <div className="copyright">© <div onClick={() => this.resetHome()} ><img id="copyright-logo" src={'/images/logo.png'} alt="" />pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
                 <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.svg'} alt="" /></a>
             </div>
         ) : <Loading />

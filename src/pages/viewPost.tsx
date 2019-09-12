@@ -7,6 +7,7 @@ import {isAuthenticated, SITE_NAME, stripHtml} from '../util/util'
 import {Link} from 'react-router-dom'
 import Loading from './loading'
 import Menu from '../components/menu'
+import PostComponent from '../components/post'
 
 class ViewPost extends Component<AppProps> {
 
@@ -39,7 +40,7 @@ class ViewPost extends Component<AppProps> {
         }
     }
 
-    async deletePost(id) {
+    deletePost = async (id) => {
         let ok = await api.delete(id)
         ok && this.props.history.push('/')
     }
@@ -71,14 +72,7 @@ class ViewPost extends Component<AppProps> {
                 <img className="logo" src={'/images/logo.png'} alt="" onClick={() => this.props.history.push('/')} />
                 {this.state.error && <div className="error">{this.state.error}</div>}
                 <div className="post-list">
-                    <div className="post">
-                        <a href={this.state.imageUrl}><img src={this.state.imageUrl} /></a>
-                        {this.state.text && <div id="text" className="text"></div>}
-                        <div className="control">
-                            {auth && <div className="delete" onClick={() => this.deletePost(this.state._id)}>delete</div>}
-                            {auth && <Link className="edit" to={`/edit/${this.state._id}`} >edit</Link>}
-                        </div>
-                    </div>
+                    <PostComponent post={this.state} deletePost={this.deletePost} strip={false} more={false}/>
                 </div>
                 <div className="copyright">© <div onClick={() => this.props.history.push('/')} ><img id="copyright-logo" src={'/images/logo.png'} alt=""/>pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
                 <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.svg'} alt="" /></a>

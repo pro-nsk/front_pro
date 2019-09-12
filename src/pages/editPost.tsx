@@ -32,9 +32,9 @@ class EditPost extends Component<AppProps> {
             text: this.state.text
         }
         try {
-            let posts = await api.edit(id, post)
-            if (posts) {
-                this.props.history.push('/')
+            let ok = await api.edit(id, post)
+            if (ok) {
+                this.props.history.goBack()
             }
         } catch (err) {
             this.setState({error: err.error})
