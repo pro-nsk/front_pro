@@ -25,7 +25,7 @@ class Menu extends Component<AppProps & MenuProps> {
     }
 
     clickHandler = e => {
-        let menu = document.getElementById('menu')
+        let menu = document.getElementById('menu-t')
         let list = document.getElementById('post-list')
         if (e.target == menu) {
             if (list) {
@@ -42,16 +42,19 @@ class Menu extends Component<AppProps & MenuProps> {
 
     renderMenu() {
         let menu: Post[] = this.state.menu
-        return menu.map(post => {
-            return (
-                <li key={post.urlName} onClick={() => this.props.gotoFunc(post.urlName)}>{'/' + post.urlName}</li>
-            )
-        })
+        return menu.length > 0 ?
+            menu.map(post => {
+                return (
+                    <li key={post.urlName} onClick={() => this.props.gotoFunc(post.urlName)}>{'/' + post.urlName}</li>
+                )
+            }) :
+            <li>...</li>
     }
 
     render() {
         return (
-            <div id="menu" onClick={() => this.loadMenu()}>menu
+            <div id="menu">
+                <span id="menu-t" onClick={() => this.loadMenu()}>menu</span>
                 <ul id='post-list'>{this.renderMenu()}</ul>
             </div>
         )

@@ -53,7 +53,7 @@ class ViewPost extends Component<AppProps> {
 
     postUpdate(url) {
         this.props.history.replace(url)
-        this.loadPost(url)
+        this.setState({ready: false}, () => this.loadPost(url))
     }
 
     render() {

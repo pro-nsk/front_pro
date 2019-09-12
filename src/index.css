@@ -2,6 +2,18 @@
     /**/
 }
 
+@font-face {
+    font-family: 'Cuprum';
+    font-display: auto;
+    src: local('Cuprum'), url(/fonts/cuprum_latin.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Cuprum';
+    font-display: auto;
+    src: local('Cuprum'), url(/fonts/cuprum_cyrillic.woff2) format('woff2');
+}
+
 :root {
     --сuprum-font-family: 'Cuprum', sans-serif;
 }

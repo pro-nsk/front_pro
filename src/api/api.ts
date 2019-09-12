@@ -12,43 +12,19 @@ export interface Post {
 class Api extends BaseApi {
 
     async home(page: number): Promise<any> {
-        try {
-            let response = await this.fetch(configuration.basePath + '/home/' + page, {method: 'GET'})
-            let json = await response.json()
-            return Promise.resolve(json)
-        } catch (error) {
-            return processError(error)
-        }
+        return this.sendRequest('/home/' + page)
     }
 
     async menu(): Promise<any> {
-        try {
-            let response = await this.fetch(configuration.basePath + '/menu', {method: 'GET'})
-            let json = await response.json()
-            return Promise.resolve(json)
-        } catch (error) {
-            return processError(error)
-        }
+        return this.sendRequest('/menu')
     }
 
     async post(id: string): Promise<Post> {
-        try {
-            let response = await this.fetch(configuration.basePath + '/post/' + id, {method: 'GET'})
-            let json = await response.json()
-            return Promise.resolve(json)
-        } catch (error) {
-            return processError(error)
-        }
+        return this.sendRequest('/post/' + id)
     }
 
     async postByUrlName(urlName: string): Promise<Post> {
-        try {
-            let response = await this.fetch(configuration.basePath + '/' + urlName, {method: 'GET'})
-            let json = await response.json()
-            return Promise.resolve(json)
-        } catch (error) {
-            return processError(error)
-        }
+        return this.sendRequest('/' + urlName)
     }
 
     async create(post: Post): Promise<boolean> {
@@ -145,6 +121,16 @@ class Api extends BaseApi {
         try {
             await this.fetch(configuration.basePath + '/post/' + id, {method: 'DELETE'})
             return Promise.resolve(true)
+        } catch (error) {
+            return processError(error)
+        }
+    }
+
+    private async sendRequest(url: string): Promise<any> {
+        try {
+            let response = await this.fetch(configuration.basePath + url, {method: 'GET'})
+            let json = await response.json()
+            return Promise.resolve(json)
         } catch (error) {
             return processError(error)
         }

@@ -74,7 +74,7 @@ class Posts extends Component<AppProps> {
     }
 
     loadPage(pageNumber: number) {
-        this.setState({pageNumber}, () => this.loadData())
+        this.setState({pageNumber, ready: false}, () => this.loadData())
     }
 
     async deletePost(id) {
