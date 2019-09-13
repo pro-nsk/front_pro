@@ -20,7 +20,7 @@ class PostComponent extends Component<AppProps & PostProps> {
         const auth = isAuthenticated()
         return (
             <div className="post">
-                <a href={post.imageUrl}><img src={post.imageUrl} /></a>
+                <img src={post.imageUrl} />
                 {post.text && <div id="text" className="text">
                     {this.props.strip && stripHtml(post.text)}
                     {this.props.more && post.urlName && post.text.length > 200 && <Link className="view" to={`/${post.urlName}`} >more</Link>}
