@@ -27,7 +27,7 @@ class Menu extends Component<AppProps & MenuProps> {
     clickHandler = e => {
         let menu = document.getElementById('menu-t')
         let list = document.getElementById('post-list')
-        if (e.target == menu) {
+        if (e.target == menu || e.target.parentElement == list) {
             if (list) {
                 list.style.visibility = 'visible'
                 list.style.opacity = '1'
