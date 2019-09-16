@@ -30,17 +30,17 @@
 
 .pro-form textarea {
     height: 200px;
-    scrollbar-color: grey black;
+    scrollbar-color: grey darkslategrey;
     scrollbar-width: thin;
 }
 
 .pro-form textarea::-webkit-scrollbar {
-    background-color: black;
+    background-color: darkslategrey;
     width:6px
 }
 
 .pro-form textarea::-webkit-scrollbar-track {
-    background-color: black
+    background-color: darkslategrey
 }
 
 .pro-form textarea::-webkit-scrollbar-thumb {
