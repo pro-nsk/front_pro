@@ -29,7 +29,7 @@ class ViewPost extends Component<AppProps> {
         try {
             let post = await api.postByUrlName(urlName)
             let ready = true
-            this.setState({...post, ready})
+            this.setState({...post, ready, error: undefined})
 
             let title = post.text ? stripHtml(post.text.substring(0, 50)) + '... - motors' : SITE_NAME
             document.title = title
