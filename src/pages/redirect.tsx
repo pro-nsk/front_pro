@@ -27,7 +27,8 @@ const existingPostMap = {
     165753600643: '/plenka-fed-2',
     6686592927: '/novosibirsk-ges',
     20274316070: '/krasnij-173-1',
-    182465011338: '/krisha-suharka'
+    182465011338: '/krisha-suharka',
+    173548682638: '/avtobaraholka'
 }
 
 class Redirect extends React.Component<AppProps> {
