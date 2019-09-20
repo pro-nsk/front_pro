@@ -26,17 +26,9 @@ class Menu extends Component<AppProps & MenuProps> {
 
     clickHandler = e => {
         let menu = document.getElementById('menu-t')
-        let list = document.getElementById('post-list')
-        if (e.target == menu || e.target.parentElement == list) {
-            if (list) {
-                list.style.visibility = 'visible'
-                list.style.opacity = '1'
-            }
-        } else {
-            if (list) {
-                list.style.visibility = 'hidden'
-                list.style.opacity = '0'
-            }
+        let list = document.getElementById('menu-p-list')
+        if (list) {
+            list.className = e.target == menu || e.target.parentElement == list ? 'm-list-visible' : 'm-list-hidden'
         }
     }
 
@@ -55,7 +47,7 @@ class Menu extends Component<AppProps & MenuProps> {
         return (
             <div id="menu">
                 <span id="menu-t" onClick={() => this.loadMenu()}>menu</span>
-                <ul id='post-list'>{this.renderMenu()}</ul>
+                <ul id='menu-p-list' className='m-list-hidden'>{this.renderMenu()}</ul>
             </div>
         )
     }
