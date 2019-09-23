@@ -55,7 +55,7 @@ class Menu extends Component<AppProps & MenuProps> {
         return (
             <div id="menu">
                 <span id="menu-t" onClick={() => this.loadMenu()}>menu</span>
-                <ul id="post-list">{this.renderMenu()}</ul>
+                <ul id='post-list'>{this.renderMenu()}</ul>
             </div>
         )
     }
