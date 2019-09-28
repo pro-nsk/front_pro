@@ -16,7 +16,7 @@ class App extends React.Component<AppProps> {
             <Router history={this.props.history}>
                 <Switch>
                     {/* route to old site */}
-                    <Route path='/post/:id' component={RedirectPage}/>
+                    <Route path="/post/:id" component={RedirectPage}/>
                     {/* route to old site */}
                     <Route path="/create" component={CreatePost} />
                     <Route path="/edit/:id" component={EditPost} />
