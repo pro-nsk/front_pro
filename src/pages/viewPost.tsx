@@ -75,7 +75,7 @@ class ViewPost extends Component<AppProps> {
                     <PostComponent post={this.state} deletePost={this.deletePost} strip={false} more={false}/>
                 </div>
                 <div className="copyright">© <div onClick={() => this.props.history.push('/')} ><img id="copyright-logo" src={'/images/logo.png'} alt=""/>pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
-                <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.svg'} alt="" /></a>
+                <a className="social" href="https://instagram.com/pro.nsk"><img src={'/images/instagram.svg'} alt="" /></a>
             </div>
         ) : <Loading />
     }

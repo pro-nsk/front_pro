@@ -89,7 +89,7 @@ class Posts extends Component<AppProps> {
                     {!this.isLast() && <div className="next" onClick={this.next}>next</div>}
                 </div>
                 <div className="copyright">© <div onClick={() => this.resetHome()} ><img id="copyright-logo" src={'/images/logo.png'} alt="" />pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
-                <a className="twitter" href="https://twitter.com/pro_nsk"><img src={'/images/twitter.svg'} alt="" /></a>
+                <a className="social" href="https://instagram.com/pro.nsk"><img src={'/images/instagram.svg'} alt="" /></a>
             </div>
         ) : <Loading />
     }
