@@ -75,6 +75,13 @@
     max-width: 100%;    
 }
 
+/* .post-list {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-column-gap: .5%;
+    grid-row-gap: 5%;
+} */
+
 .post-list > div {
     margin: 30px 0 30px 0;
     /*null height with float divs hack*/
