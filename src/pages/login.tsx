@@ -15,7 +15,7 @@ class Login extends Component<AppProps> {
 
     login = async () => {
         try {
-            let success = await api.login(this.state.email, this.state.pass)
+            const success = await api.login(this.state.email, this.state.pass)
             if (success) {
                 this.props.history.push('/')
             }
