@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
 import Loading from './loading'
 import Menu from '../components/menu'
 import PostComponent from '../components/post'
+import Footer from '../components/footer'
 
 class ViewPost extends Component<AppProps> {
 
@@ -74,8 +75,7 @@ class ViewPost extends Component<AppProps> {
                 <div className="post-list">
                     <PostComponent post={this.state} deletePost={this.deletePost} strip={false} more={false}/>
                 </div>
-                <div className="copyright">© <div onClick={() => this.props.history.push('/')} ><img id="copyright-logo" src={'/images/logo.png'} alt=""/>pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
-                <a className="social" href="https://instagram.com/pro.nsk"><img src={'/images/instagram.svg'} alt="" /></a>
+                <Footer homeFunc={() => this.props.history.push('/')}/>
             </div>
         ) : <Loading />
     }

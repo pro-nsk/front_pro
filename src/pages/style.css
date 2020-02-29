@@ -1,5 +1,5 @@
 .home {
-    max-width: 1024px;
+    max-width: 900px;
     margin: 0 auto;
     height: 100%;
 }
@@ -90,17 +90,17 @@
 
 .control {
     margin: 0 auto;
-    max-width: 1024px;
+    max-width: 900px;
 }
 
 .text {
     margin: 0 auto 10px;
-    max-width: 1024px;
+    max-width: 900px;
     white-space: pre-line;
 }
 
 .top-bar, .bottom-bar {
-    max-width: 1024px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -175,9 +175,13 @@
     cursor: pointer;
 }
 
+.footer {
+    text-align: center;
+}
+
 .copyright {
     margin-bottom: 30px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .copyright div {
@@ -185,13 +189,22 @@
 }
 
 .social {
-    margin: 0 auto 30px;
-    display: block;
-    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social img {
+    margin: 0 10px;
 }
 
-.social img {
+.social .in {
     width: 40px;
+}
+.social .tw {
+    width: 26px;
+}
+.social .tg {
+    width: 26px;
 }
 
 .loading {

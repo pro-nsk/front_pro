@@ -1,16 +1,19 @@
-import * as React from 'react'
+import {useEffect} from 'react'
 import {api} from '../api/api'
 import AppProps from '../util/appProps'
 
-class Logout extends React.Component<AppProps> {
-    async componentDidMount() {
+const Logout = (props: AppProps) => {
+
+    const logout = async () => {
         await api.logout()
-        this.props.history.push('/')
+        props.history.push('/')
     }
 
-    render() {
-        return null
-    }
+    useEffect(() => {
+        logout()
+    }, [])
+
+    return null
 }
 
 export default Logout

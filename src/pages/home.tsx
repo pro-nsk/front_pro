@@ -8,6 +8,7 @@ import AppProps from '../util/appProps'
 import {backToTop, isAuthenticated, SITE_NAME} from '../util/util'
 import Loading from './loading'
 import './style.css'
+import Footer from '../components/footer'
 
 const PAGE_SIZE = 10
 
@@ -88,8 +89,7 @@ class Posts extends Component<AppProps> {
                     {!this.isFirst() && <div className="prev" onClick={this.prev}>prev</div>}
                     {!this.isLast() && <div className="next" onClick={this.next}>next</div>}
                 </div>
-                <div className="copyright">© <div onClick={() => this.resetHome()} ><img id="copyright-logo" src={'/images/logo.png'} alt="" />pro nsk</div>, 2011. Материалы сайта защищены авторским правом. При копировании обратная ссылка обязательна.</div>
-                <a className="social" href="https://instagram.com/pro.nsk"><img src={'/images/instagram.svg'} alt="" /></a>
+                <Footer homeFunc={() => this.resetHome()}/>
             </div>
         ) : <Loading />
     }
