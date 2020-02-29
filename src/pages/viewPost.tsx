@@ -28,11 +28,11 @@ class ViewPost extends Component<AppProps> {
 
     async loadPost(urlName) {
         try {
-            let post = await api.postByUrlName(urlName)
-            let ready = true
+            const post = await api.postByUrlName(urlName)
+            const ready = true
             this.setState({...post, ready, error: undefined})
 
-            let title = post.text ? stripHtml(post.text.substring(0, 50)) + '... - motors' : SITE_NAME
+            const title = post.text ? stripHtml(post.text.substring(0, 50)) + '... - motors' : SITE_NAME
             document.title = title
 
             this.injectPostHtml(post.text)
@@ -42,12 +42,12 @@ class ViewPost extends Component<AppProps> {
     }
 
     deletePost = async (id) => {
-        let ok = await api.delete(id)
+        const ok = await api.delete(id)
         ok && this.props.history.push('/')
     }
 
     injectPostHtml(text) {
-        let div = document.getElementById('text')
+        const div = document.getElementById('text')
         if (div) {
             div.innerHTML = text
         }

@@ -1,5 +1,5 @@
 .home {
-    max-width: 900px;
+    max-width: 1440px;
     margin: 0 auto;
     height: 100%;
 }
@@ -72,15 +72,10 @@
 }
 
 .post-list img {
-    max-width: 100%;    
+    max-width: 100%;
+    display: block;
+    margin: 0 auto 20px;
 }
-
-/* .post-list {
-    display: grid;
-    grid-template-columns: repeat(3, 33%);
-    grid-column-gap: .5%;
-    grid-row-gap: 5%;
-} */
 
 .post-list > div {
     margin: 30px 0 30px 0;
@@ -93,10 +88,23 @@
     max-width: 900px;
 }
 
-.text {
+.text-s {
     margin: 0 auto 10px;
     max-width: 900px;
     white-space: pre-line;
+}
+.text-l {
+    margin: 0 auto 10px;
+    max-width: 1440px;
+}
+.text-l p,
+.text-l ul {
+    max-width: 900px;
+    margin: 20px auto;
+}
+.text-l ul {
+    padding-left: 0;
+    list-style: none;
 }
 
 .top-bar, .bottom-bar {
