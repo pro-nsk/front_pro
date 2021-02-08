@@ -1,9 +1,9 @@
 import * as React from 'react'
-import {Link} from 'react-router-dom'
-import {Post} from '../api/api'
+import { Link } from 'react-router-dom'
+import { Post } from '../api/api'
 import '../pages/style.css'
 import AppProps from '../util/appProps'
-import {isAuthenticated, stripHtml} from '../util/util'
+import { isAuthenticated, stripHtml } from '../util/util'
 
 interface PostProps {
     post: Post
@@ -14,12 +14,12 @@ interface PostProps {
 
 const PostComponent = (props: AppProps & PostProps) => {
 
-    const {post} = props
+    const { post } = props
     const auth = isAuthenticated()
 
     return (
         <div className="post">
-            <img src={post.imageUrl} />
+            <a href={post.imageUrl}><img src={post.imageUrl} /></a>
             {post.text && <div id="text" className={props.strip && props.more ? 'text-s' : 'text-l'}>
                 {props.strip && stripHtml(post.text)}
                 {props.more && post.urlName && post.text.length > 200 && <Link className="view" to={`/${post.urlName}`} >more</Link>}

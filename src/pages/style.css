@@ -71,7 +71,27 @@
     text-align: center;
 }
 
-.post-list img {
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(6,15%);
+    grid-column-gap: 2%;
+    grid-row-gap: 2%;
+    margin-bottom: 16%;
+}
+.post-grid > div {
+    /* overflow: hidden; */
+    grid-column: span 2;
+}
+.post-grid img {
+    width: 100%;
+    height: 20rem;
+    /* object-fit: cover; */
+}
+.post-grid-text {
+    padding: 1em;
+}
+
+/* .post-list img {
     max-width: 100%;
     display: block;
     margin: 0 auto 20px;
@@ -79,9 +99,8 @@
 
 .post-list > div {
     margin: 30px 0 30px 0;
-    /*null height with float divs hack*/
     overflow: hidden;
-}
+} */
 
 .control {
     margin: 0 auto;

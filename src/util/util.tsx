@@ -17,12 +17,12 @@ export function isEnter(e) {
 export const SITE_NAME = 'motors - novosibirsk+'
 
 export function stripHtml(html) {
-    var tempDiv = document.createElement('div')
+    const tempDiv = document.createElement('div')
     tempDiv.innerHTML = html
     return tempDiv.textContent || tempDiv.innerText || ''
 }
 
 export function backToTop() {
-    let navBar = document.getElementById('top-bar')
+    const navBar = document.getElementById('top-bar')
     navBar && navBar.scrollIntoView()
 }

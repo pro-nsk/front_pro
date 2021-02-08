@@ -15,13 +15,13 @@ class CreatePost extends Component<AppProps> {
     }
 
     create = async () => {
-        let post: Post = {
+        const post: Post = {
             imageUrl: this.state.imageUrl,
             urlName: this.state.urlName,
             text: this.state.text
         }
         try {
-            let posts = await api.create(post)
+            const posts = await api.create(post)
             if (posts) {
                 this.props.history.push('/')
             }

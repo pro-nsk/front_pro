@@ -1,14 +1,11 @@
 import * as React from 'react'
-import {Component} from 'react'
-import {Link} from 'react-router-dom'
-import {api, Post} from '../api/api'
-import Menu from '../components/menu'
+import { Component } from 'react'
+import { api, Post } from '../api/api'
 import PostComponent from '../components/post'
 import AppProps from '../util/appProps'
-import {backToTop, isAuthenticated, SITE_NAME} from '../util/util'
+import { backToTop, SITE_NAME } from '../util/util'
 import Loading from './loading'
 import './style.css'
-import Footer from '../components/footer'
 
 const PAGE_SIZE = 10
 
@@ -27,14 +24,14 @@ class Posts extends Component<AppProps> {
     }
 
     async loadData() {
-        let posts = await api.home(this.state.pageNumber)
-        let ready = true
-        this.setState({posts, ready})
+        const posts = await api.home(this.state.pageNumber)
+        const ready = true
+        this.setState({ posts, ready })
     }
 
     renderFeed() {
-        let posts: Post[] = this.state.posts
-        return posts.map(post => <PostComponent key={post._id} post={post} deletePost={this.deletePost} strip more/>)
+        const posts: Post[] = this.state.posts
+        return posts.map(post => <PostComponent key={post._id} post={post} deletePost={this.deletePost} strip more />)
     }
 
     next = () => {
@@ -61,35 +58,24 @@ class Posts extends Component<AppProps> {
     }
 
     loadPage(pageNumber: number) {
-        this.setState({pageNumber, ready: false}, () => this.loadData())
+        this.setState({ pageNumber, ready: false }, () => this.loadData())
     }
 
     deletePost = async (id) => {
-        let ok = await api.delete(id)
+        const ok = await api.delete(id)
         ok && this.loadData()
     }
 
     render() {
-        const auth = isAuthenticated()
         return this.state.ready ? (
-            <div className="home">
-                <div id="top-bar" className="top-bar">
-                    <Menu gotoFunc={url => this.props.history.push(url)} />
-                    {auth && <Link className="create" to="/create" >create</Link>}
-                    {auth ?
-                        <Link className="auth" to="/logout" >logout</Link> :
-                        <Link className="auth" to="/login" >login</Link>
-                    }
-                </div>
-                <img className="logo" src={'/images/logo.png'} alt="" onClick={() => this.loadPage(0)} />
-                <div className="post-list">
+            <div>
+                <div className="post-grid">
                     {this.renderFeed()}
                 </div>
                 <div className="bottom-bar">
                     {!this.isFirst() && <div className="prev" onClick={this.prev}>prev</div>}
                     {!this.isLast() && <div className="next" onClick={this.next}>next</div>}
                 </div>
-                <Footer homeFunc={() => this.resetHome()}/>
             </div>
         ) : <Loading />
     }
