@@ -4,7 +4,7 @@ import * as serviceWorker      from './serviceWorker'
 import App                     from './app'
 import {Route, Router, Switch} from 'react-router'
 import {createBrowserHistory}  from 'history'
-import './index.css'
+import './index.css' 
 
 let html = (
     <Router history={createBrowserHistory()}>
